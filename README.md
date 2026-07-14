@@ -17,7 +17,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.1.0 is the first public research-prototype release. It implements
+Version 0.1.1 is the current public research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and

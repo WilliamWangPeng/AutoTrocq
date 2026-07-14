@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.1.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.1.1 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -54,4 +54,3 @@ An invalid or incomplete specification exits with status 2. A policy-blocked
 specification also exits with status 2 but writes a manifest whose
 `policy_outcome` is `safe_reject` and whose `blocked_axioms` field explains
 the boundary.
-
