@@ -1,5 +1,8 @@
 # AutoTrocq
 
+[![CI](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml/badge.svg)](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/WilliamWangPeng/AutoTrocq)](https://github.com/WilliamWangPeng/AutoTrocq/releases/latest)
+
 AutoTrocq is a research prototype for generating axiom-aware Coq relation
 packages and recording kernel-facing replay evidence. A JSON specification
 declares source and target types, a transfer relation, relation laws, and an
@@ -9,6 +12,8 @@ and manifest, and can run both `coqc` and `coqchk` on an accepted package.
 
 This repository accompanies the manuscript *AutoTrocq: Axiom-Aware Proof
 Transfer for CIC with Reproducible Coq Kernel Replay*.
+
+Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 

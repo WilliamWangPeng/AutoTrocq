@@ -25,6 +25,10 @@ classifiers = [
 [project.scripts]
 autotrocq = "autotrocq.cli:main"
 
+[project.urls]
+Repository = "https://github.com/WilliamWangPeng/AutoTrocq"
+Documentation = "https://github.com/WilliamWangPeng/AutoTrocq/blob/main/ARTIFACT.md"
+Releases = "https://github.com/WilliamWangPeng/AutoTrocq/releases"
+
 [tool.setuptools.packages.find]
 where = ["src"]
-
