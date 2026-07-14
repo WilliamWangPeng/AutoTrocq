@@ -1,0 +1,4 @@
+"size","generated_modules","coqc_success","coqc_failure","batch_coqchk_status","coqc_ms","batch_coqchk_ms","category_summary","status"
+"120","120","120","0","coqchk_success","57824.7","5421.3","eq:24; logical:24; product:24; retraction:24; section:24","success"
+"240","240","240","0","coqchk_success","122881.7","9861.3","eq:48; logical:48; product:48; retraction:48; section:48","success"
+"480","480","480","0","coqchk_success","260766.9","13458.9","eq:96; logical:96; product:96; retraction:96; section:96","success"

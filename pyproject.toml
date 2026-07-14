@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autotrocq"
+version = "0.1.0"
+description = "Axiom-aware relation-package generation and Coq kernel replay"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Peng Wang", email = "peng.wang@siat.ac.cn"},
+  {name = "Kaiyuan Qi"},
+  {name = "Bingheng Yan"}
+]
+keywords = ["Coq", "proof transfer", "dependent type theory", "reproducibility"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Mathematics"
+]
+
+[project.scripts]
+autotrocq = "autotrocq.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

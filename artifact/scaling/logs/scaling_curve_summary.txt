@@ -1,0 +1,24 @@
+V59 scaling-curve replay experiment
+sizes=120,240,480
+total_generated_modules=840
+total_coqc_success=840
+total_coqc_failure=0
+size_120_modules=120
+size_120_coqc_success=120
+size_120_coqc_failure=0
+size_120_batch_coqchk_status=coqchk_success
+size_120_coqc_ms=57824.7
+size_120_batch_coqchk_ms=5421.3
+size_240_modules=240
+size_240_coqc_success=240
+size_240_coqc_failure=0
+size_240_batch_coqchk_status=coqchk_success
+size_240_coqc_ms=122881.7
+size_240_batch_coqchk_ms=9861.3
+size_480_modules=480
+size_480_coqc_success=480
+size_480_coqc_failure=0
+size_480_batch_coqchk_status=coqchk_success
+size_480_coqc_ms=260766.9
+size_480_batch_coqchk_ms=13458.9
+status=success

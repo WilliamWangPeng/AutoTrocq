@@ -1,0 +1,12 @@
+V60 case-study replay experiment
+case_modules=12
+distinct_patterns=12
+proof_obligations=37
+coqc_success=12
+coqc_failure=0
+batch_coqchk_status=coqchk_success
+coqc_ms=6996.8
+batch_coqchk_ms=107887.4
+figure_pdf=figures/v60_case_study_overview.pdf
+figure_png=figures/v60_case_study_overview.png
+status=success

@@ -1,0 +1,18 @@
+(* V59 generated scaling module *)
+(* SIZE: 480 *)
+(* CATEGORY: section *)
+
+Module V59_N480_SECTION_212.
+Definition embed_212 (b : bool) : nat := if b then S O else O.
+Definition project_212 (n : nat) : bool :=
+  match n with
+  | O => false
+  | S _ => true
+  end.
+
+Theorem section_212 : forall b : bool, project_212 (embed_212 b) = b.
+Proof.
+  destruct b; reflexivity.
+Qed.
+End V59_N480_SECTION_212.
+

@@ -1,0 +1,7 @@
+V50 axiom-policy stress tests
+total_cases=5
+coqc_success=5
+coqchk_success=5
+policy_accept=2
+policy_safe_reject=3
+status=success

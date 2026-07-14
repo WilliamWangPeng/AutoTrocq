@@ -1,0 +1,9 @@
+V58 large generated relation-witness suite
+generated_modules=60
+coqc_success=60
+coqc_failure=0
+batch_coqchk_status=coqchk_success
+coqc_ms=23943.2
+batch_coqchk_ms=2682.7
+category_summary=eq:12; logical:12; product:12; retraction:12; section:12
+status=success

@@ -1,0 +1,7 @@
+"module","relation_strength","coqc_status","coqchk_status","autotrocq_policy_status","coqc_version","coqc_log","coqchk_log"
+"S0_PLAIN_RELATION","plain","kernel_success","coqchk_success","accept","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","logs/S0_PLAIN_RELATION.coqc.log","logs/S0_PLAIN_RELATION.coqchk.log"
+"S1_SECTION_WITNESS","section","kernel_success","coqchk_success","accept","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","logs/S1_SECTION_WITNESS.coqc.log","logs/S1_SECTION_WITNESS.coqchk.log"
+"S2_RETRACTION_WITNESS","retraction","kernel_success","coqchk_success","accept","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","logs/S2_RETRACTION_WITNESS.coqc.log","logs/S2_RETRACTION_WITNESS.coqchk.log"
+"S3_EQUIVALENCE_WITNESS","equivalence","kernel_success","coqchk_success","accept","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","logs/S3_EQUIVALENCE_WITNESS.coqc.log","logs/S3_EQUIVALENCE_WITNESS.coqchk.log"
+"S4_LOGICAL_RELATION","logical","kernel_success","coqchk_success","accept","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","logs/S4_LOGICAL_RELATION.coqc.log","logs/S4_LOGICAL_RELATION.coqchk.log"
+"S5_MISSING_EQUIVALENCE_POLICY","requires_equivalence_but_only_plain_available","not_applicable","not_applicable","safe_reject","The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1","",""

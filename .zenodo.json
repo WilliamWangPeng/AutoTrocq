@@ -1,0 +1,12 @@
+{
+  "title": "AutoTrocq: Axiom-Aware Proof Transfer for CIC",
+  "description": "Research prototype and reproducibility artifact for axiom-aware Coq relation-package generation and kernel replay.",
+  "creators": [
+    {"name": "Wang, Peng", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},
+    {"name": "Qi, Kaiyuan", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},
+    {"name": "Yan, Bingheng", "affiliation": "Jinan Inspur Data Technology Co., Ltd."}
+  ],
+  "license": "MIT",
+  "upload_type": "software",
+  "keywords": ["Coq", "proof transfer", "CIC", "automated reasoning", "reproducibility"]
+}

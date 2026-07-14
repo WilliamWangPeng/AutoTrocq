@@ -1,0 +1,14 @@
+{
+  "module": "BlockedAxiomExample",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "plain",
+  "required_axioms": ["propositional_extensionality"],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [],
+  "laws": []
+}
+

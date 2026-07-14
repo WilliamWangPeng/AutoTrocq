@@ -1,0 +1,30 @@
+{
+  "module": "BoolNatSection",
+  "source_type": "bool",
+  "target_type": "nat",
+  "relation": "fun b n => n = if b then 1 else 0",
+  "requested_strength": "section",
+  "required_axioms": [],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [
+    "Definition forward (b : Source) : Target := if b then 1 else 0.",
+    "Definition backward (n : Target) : Source := match n with | 0 => false | _ => true end."
+  ],
+  "laws": [
+    {
+      "name": "forward_related",
+      "kind": "logical",
+      "statement": "forall b : Source, transfer_rel b (forward b)",
+      "proof": "intro b. unfold transfer_rel, forward. reflexivity."
+    },
+    {
+      "name": "section_law",
+      "kind": "section",
+      "statement": "forall b : Source, backward (forward b) = b",
+      "proof": "destruct b; reflexivity."
+    }
+  ]
+}
+
