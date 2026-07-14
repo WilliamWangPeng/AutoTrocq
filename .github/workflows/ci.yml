@@ -27,8 +27,6 @@ jobs:
             coqc --version
             python3 --version
             endGroup
-            python3 -m pip install --user -e .
-            export PATH="$HOME/.local/bin:$PATH"
-            autotrocq generate examples/bool_nat_section.json --out build/quickstart
-            autotrocq replay build/quickstart/BoolNatSection.v --report build/quickstart/BoolNatSection.replay.json
-
+            export PYTHONPATH="$PWD/src"
+            python3 -m autotrocq.cli generate examples/bool_nat_section.json --out build/quickstart
+            python3 -m autotrocq.cli replay build/quickstart/BoolNatSection.v --report build/quickstart/BoolNatSection.replay.json
