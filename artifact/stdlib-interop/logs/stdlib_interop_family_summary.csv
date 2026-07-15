@@ -1,0 +1,7 @@
+"family","modules","obligations","coqc_success","coqc_failure","coqc_seconds"
+"list-map","50","100","50","0","35.71"
+"list-append","50","100","50","0","31.09"
+"list-reverse","50","100","50","0","28.97"
+"bool-negation","50","100","50","0","24.99"
+"nat-add","50","100","50","0","43.67"
+"nat-max","50","100","50","0","33.88"

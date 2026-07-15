@@ -1,0 +1,16 @@
+suite,directory,modules,coqchk_status,coqchk_seconds,coqchk_returncode
+minimal-replay,coq,3,coqchk_success,20.335819,0
+seed-suite,coq,7,coqchk_success,35.313132,0
+generated-seed,generated_coq,7,coqchk_success,38.072558,0
+policy-stress,coq,2,coqchk_success,1.49103,0
+relation-strength,coq,5,coqchk_success,1.977297,0
+large-generated,generated_coq,60,coqchk_success,2.013904,0
+scaling,generated_coq/n120,120,coqchk_success,1.782721,0
+scaling,generated_coq/n240,240,coqchk_success,1.895516,0
+scaling,generated_coq/n480,480,coqchk_success,2.12071,0
+case-studies,coq,12,coqchk_success,36.450711,0
+library-migration,coq,360,coqchk_success,41.636101,0
+robustness-matrix,coq,240,coqchk_success,38.033841,0
+stdlib-interop,coq,300,coqchk_success,18.276594,0
+proof-maintenance,coq,480,coqchk_success,21.05156,0
+third-party-idiom,coq,720,coqchk_success,25.275599,0

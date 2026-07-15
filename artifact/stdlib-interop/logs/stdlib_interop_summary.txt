@@ -1,0 +1,10 @@
+V65 standard-library interoperability suite
+total_modules=300
+total_obligations=600
+coqc_success=300
+coqc_failure=0
+coqchk_success=300
+batch_coqchk_status=coqchk_success
+coqc_ms=198297.2
+batch_coqchk_ms=80236.6
+status=success

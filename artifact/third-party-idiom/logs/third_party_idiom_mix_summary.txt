@@ -1,0 +1,13 @@
+V70 third-party idiom mix suite
+total_modules=720
+total_obligations=1440
+families=9
+coqc_success=720
+coqc_failure=0
+coqchk_success=720
+batch_coqchk_status=coqchk_success
+coqc_ms=359123
+batch_coqchk_ms=62697.2
+figure_pdf=figures/v70_third_party_idiom_mix.pdf
+figure_png=figures/v70_third_party_idiom_mix.png
+status=success

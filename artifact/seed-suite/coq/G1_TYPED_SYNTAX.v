@@ -1,0 +1,52 @@
+From Coq Require Import Arith.PeanoNat.
+
+(* Seed-family replay: small typed syntax after a representation change. *)
+
+Inductive ty : Type :=
+| TNat.
+
+Inductive expr : Type :=
+| EConst : nat -> expr
+| EPlus : expr -> expr -> expr.
+
+Inductive typed : expr -> ty -> Prop :=
+| typed_const : forall n, typed (EConst n) TNat
+| typed_plus : forall e1 e2, typed e1 TNat -> typed e2 TNat -> typed (EPlus e1 e2) TNat.
+
+Fixpoint eval (e : expr) : nat :=
+  match e with
+  | EConst n => n
+  | EPlus e1 e2 => eval e1 + eval e2
+  end.
+
+Fixpoint optimize (e : expr) : expr :=
+  match e with
+  | EConst n => EConst n
+  | EPlus (EConst 0) e2 => optimize e2
+  | EPlus e1 e2 => EPlus (optimize e1) (optimize e2)
+  end.
+
+Lemma optimize_preserves_typing :
+  forall e, typed e TNat -> typed (optimize e) TNat.
+Proof.
+  intros e H.
+  induction H.
+  - simpl. constructor.
+  - destruct e1.
+    + destruct n.
+      * simpl. exact IHtyped2.
+      * simpl. constructor; [constructor | exact IHtyped2].
+    + simpl. constructor; assumption.
+Qed.
+
+Lemma optimize_preserves_eval :
+  forall e, eval (optimize e) = eval e.
+Proof.
+  induction e as [n | e1 IH1 e2 IH2].
+  - reflexivity.
+  - destruct e1 as [n | a b].
+    + destruct n.
+      * simpl. exact IH2.
+      * simpl. rewrite IH2. reflexivity.
+    + simpl in IH1. simpl. rewrite IH1, IH2. reflexivity.
+Qed.

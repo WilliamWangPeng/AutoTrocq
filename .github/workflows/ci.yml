@@ -30,3 +30,4 @@ jobs:
             export PYTHONPATH="$PWD/src"
             python3 -m autotrocq.cli generate examples/bool_nat_section.json --out /tmp/autotrocq-quickstart
             python3 -m autotrocq.cli replay /tmp/autotrocq-quickstart/BoolNatSection.v --report /tmp/autotrocq-quickstart/BoolNatSection.replay.json
+            python3 -m autotrocq.cli batch artifact/direct-cli-matrix/specs --out /tmp/autotrocq-matrix

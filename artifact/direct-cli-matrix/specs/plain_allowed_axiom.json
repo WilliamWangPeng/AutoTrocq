@@ -1,0 +1,20 @@
+{
+  "module": "Matrix_Plain_AllowedAxiom",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "plain",
+  "required_axioms": [
+    "proof_irrelevance"
+  ],
+  "policy": {
+    "allowed_axioms": [
+      "proof_irrelevance"
+    ]
+  },
+  "definitions": [
+    "Definition forward (x : Source) : Target := x.",
+    "Definition backward (x : Target) : Source := x."
+  ],
+  "laws": []
+}

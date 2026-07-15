@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.0 - 2026-07-15
+
+- Add outcome-aware `autotrocq batch` generation and kernel replay.
+- Add a direct 15-case CLI matrix over five relation strengths and three axiom
+  policies.
+- Publish the complete 3,220-module, 3,221-request experimental corpus.
+- Correct the empirical ledger to 3,036 checked acceptances, 65 policy-safe
+  rejections, 120 compile-safe rejections, and zero unexpected failures.
+- Make full-corpus replay validate expected positive and negative outcomes
+  without writing compiled objects into the archived source tree.
+
 ## 0.1.2 - 2026-07-15
 
 - Add complete Zenodo release metadata and enable persistent software archiving.

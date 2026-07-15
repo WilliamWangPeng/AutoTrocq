@@ -1,6 +1,6 @@
 # Artifact Guide
 
-Persistent software archive: https://doi.org/10.5281/zenodo.21378178
+Persistent software archive (all versions): https://doi.org/10.5281/zenodo.21378177
 
 ## Evaluation Boundary
 
@@ -29,18 +29,33 @@ Run `scripts/reproduce_quickstart.ps1` on Windows or
 The quickstart normally completes in under one minute once Python and Coq are
 installed. Runtime varies with filesystem and process-startup cost.
 
-## Curated Paper Artifact
+## Complete Paper Artifact
 
-The `artifact/` directory is intentionally smaller than the historical local
-workspace. It contains only the source and evidence needed to inspect the
-reported workflow:
+The `artifact/` directory contains the source and evidence needed to inspect
+the reported workflow without carrying compiled Coq objects:
 
 - `large-generated/`: 60 generated relation-witness modules and replay data;
 - `case-studies/`: 12 hand-written Coq developments and replay data;
 - `policy-stress/`: policy-accept and safe-reject cases;
 - `relation-strength/`: relation-strength cases;
 - `scaling/`: scaling-curve source and summaries;
+- `minimal-replay/`, `seed-suite/`, and `generated-seed/`: initial witnesses;
+- `library-migration/`, `stdlib-interop/`, `proof-maintenance/`, and
+  `third-party-idiom/`: larger controlled workload families;
+- `robustness-matrix/`: accepted, policy-blocked, and compile-blocked requests;
+- `strict-outcome-audit/`: the mutually exclusive 3,221-request ledger and
+  per-suite summary;
+- `direct-cli-matrix/`: 15 executable package specifications and direct batch
+  results;
+- `full-release-validation/`: outcome-aware Coq 8.20.1 full-run CSV and JSON
+  summaries for all 3,220 sources and 15 `coqchk` batches;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
+
+The complete corpus contains 3,220 `.v` files. Its strict ledger contains
+3,221 decision requests because one relation-strength diagnostic is rejected
+before a Coq source file is generated. The outcomes are mutually exclusive:
+3,036 accepted and independently checked requests, 65 policy-safe rejections,
+120 compile-safe rejections, and zero unexpected failures.
 
 Generated `.vo`, `.glob`, `.vok`, and `.vos` files are excluded. Reviewers
 recreate them locally with the replay scripts.
@@ -61,5 +76,6 @@ correctness.
 - It checks supplied relation laws but does not synthesize their proofs.
 - Timing results are machine-dependent and should not be read as portable
   performance guarantees.
-- The historical stress corpus is larger than the curated public subset and
-  is intended for archival storage rather than the source repository.
+- The corpus is controlled rather than mined from arbitrary third-party Coq
+  repositories; its timings are therefore workload measurements, not a claim
+  about all proof developments.

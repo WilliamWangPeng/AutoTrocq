@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .core import SpecError, doctor, generate, replay
+from .core import SpecError, batch, doctor, generate, replay
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -24,6 +24,17 @@ def _parser() -> argparse.ArgumentParser:
     replay_parser = commands.add_parser("replay", help="compile a generated package and run coqchk")
     replay_parser.add_argument("coq_file", type=Path)
     replay_parser.add_argument("--report", type=Path)
+
+    batch_parser = commands.add_parser(
+        "batch", help="generate and replay a directory of JSON package specifications"
+    )
+    batch_parser.add_argument("spec_dir", type=Path)
+    batch_parser.add_argument("--out", type=Path, default=Path("build/batch"))
+    batch_parser.add_argument(
+        "--no-replay",
+        action="store_true",
+        help="generate and classify packages without invoking coqc or coqchk",
+    )
 
     commands.add_parser("doctor", help="report required executable versions")
     return parser
@@ -51,6 +62,10 @@ def main(argv: list[str] | None = None) -> int:
             }
             print(json.dumps(summary, indent=2, sort_keys=True))
             return 0 if result["outcome"] == "kernel_success" else 1
+        if args.command == "batch":
+            result = batch(args.spec_dir, args.out, replay_accepted=not args.no_replay)
+            print(json.dumps(result, indent=2, sort_keys=True))
+            return 0 if result["status"] == "success" else 1
         print(json.dumps(doctor(), indent=2, sort_keys=True))
         return 0
     except SpecError as exc:

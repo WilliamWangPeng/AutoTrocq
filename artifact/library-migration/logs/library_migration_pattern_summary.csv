@@ -1,0 +1,6 @@
+"pattern","modules","obligations","coqc_success","coqc_failure","coqc_ms"
+"accumulator","72","216","72","0","117074.3"
+"assoc-update","72","216","72","0","46072.1"
+"option-sentinel","72","216","72","0","30914.5"
+"record-tuple","72","216","72","0","29667.5"
+"tree-mirror","72","216","72","0","41960.3"

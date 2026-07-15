@@ -1,0 +1,16 @@
+spec,module,relation_strength,policy_outcome,blocked_axioms,coqc_returncode,coqchk_returncode,coqc_seconds,coqchk_seconds,final_outcome,diagnostic
+equivalence_allowed_axiom.json,Matrix_Equivalence_AllowedAxiom,equivalence,accept,,0,0,1.960736,1.558713,accepted_kernel_checked,
+equivalence_blocked_axiom.json,Matrix_Equivalence_BlockedAxiom,equivalence,safe_reject,functional_extensionality,,,,,safe_reject_policy_blocked,axiom policy blocks the requested package
+equivalence_constructive.json,Matrix_Equivalence_Constructive,equivalence,accept,,0,0,2.729115,2.229338,accepted_kernel_checked,
+logical_allowed_axiom.json,Matrix_Logical_AllowedAxiom,logical,accept,,0,0,2.591219,2.156381,accepted_kernel_checked,
+logical_blocked_axiom.json,Matrix_Logical_BlockedAxiom,logical,safe_reject,functional_extensionality,,,,,safe_reject_policy_blocked,axiom policy blocks the requested package
+logical_constructive.json,Matrix_Logical_Constructive,logical,accept,,0,0,1.928779,1.513906,accepted_kernel_checked,
+plain_allowed_axiom.json,Matrix_Plain_AllowedAxiom,plain,accept,,0,0,2.161866,1.478269,accepted_kernel_checked,
+plain_blocked_axiom.json,Matrix_Plain_BlockedAxiom,plain,safe_reject,functional_extensionality,,,,,safe_reject_policy_blocked,axiom policy blocks the requested package
+plain_constructive.json,Matrix_Plain_Constructive,plain,accept,,0,0,2.088404,1.545424,accepted_kernel_checked,
+retraction_allowed_axiom.json,Matrix_Retraction_AllowedAxiom,retraction,accept,,0,0,1.98135,1.740352,accepted_kernel_checked,
+retraction_blocked_axiom.json,Matrix_Retraction_BlockedAxiom,retraction,safe_reject,functional_extensionality,,,,,safe_reject_policy_blocked,axiom policy blocks the requested package
+retraction_constructive.json,Matrix_Retraction_Constructive,retraction,accept,,0,0,2.168906,2.056649,accepted_kernel_checked,
+section_allowed_axiom.json,Matrix_Section_AllowedAxiom,section,accept,,0,0,3.374673,1.357566,accepted_kernel_checked,
+section_blocked_axiom.json,Matrix_Section_BlockedAxiom,section,safe_reject,functional_extensionality,,,,,safe_reject_policy_blocked,axiom policy blocks the requested package
+section_constructive.json,Matrix_Section_Constructive,section,accept,,0,0,2.171737,1.420287,accepted_kernel_checked,

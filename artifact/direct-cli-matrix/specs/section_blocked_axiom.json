@@ -1,0 +1,25 @@
+{
+  "module": "Matrix_Section_BlockedAxiom",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "section",
+  "required_axioms": [
+    "functional_extensionality"
+  ],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [
+    "Definition forward (x : Source) : Target := x.",
+    "Definition backward (x : Target) : Source := x."
+  ],
+  "laws": [
+    {
+      "name": "section_law",
+      "kind": "section",
+      "statement": "forall x : Source, backward (forward x) = x",
+      "proof": "intro x. reflexivity."
+    }
+  ]
+}

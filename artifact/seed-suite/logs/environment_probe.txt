@@ -1,0 +1,5 @@
+run_id=2026-06-22T07:56:58Z
+coqc=The Coq Proof Assistant, version 8.18.0
+compiled with OCaml 4.14.1
+kernel=Linux u 6.18.33.1-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Fri Jun  5 01:12:21 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+pwd=/mnt/d/----0000  论文3 AutoTrocq_Practical_Experience_and_Reproducible_Evaluation_Axiom_Aware_Proof_Transfer_Full_CIC_SPE_V42_All_Files/experiments/kernel_replay_v44_seed_suite

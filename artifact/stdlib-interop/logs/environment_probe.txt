@@ -1,0 +1,4 @@
+run_id=2026-06-23T09:06:12Z
+coqc_version=The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1
+windows_root=D:\----0000  ??3 AutoTrocq_Practical_Experience_and_Reproducible_Evaluation_Axiom_Aware_Proof_Transfer_Full_CIC_SPE_V42_All_Files\experiments\kernel_replay_v65_stdlib_interop
+wsl_root=/mnt/d/----0000  ??3 AutoTrocq_Practical_Experience_and_Reproducible_Evaluation_Axiom_Aware_Proof_Transfer_Full_CIC_SPE_V42_All_Files/experiments/kernel_replay_v65_stdlib_interop
