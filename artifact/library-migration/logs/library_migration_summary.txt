@@ -1,0 +1,13 @@
+V63 library-style migration replay experiment
+patterns=record-tuple,option-sentinel,assoc-update,tree-mirror,accumulator
+modules_per_pattern=72
+total_modules=360
+total_proof_obligations=1080
+coqc_success=360
+coqc_failure=0
+batch_coqchk_status=coqchk_success
+coqc_ms=265688.7
+batch_coqchk_ms=115087.7
+figure_pdf=figures/v63_library_migration_suite.pdf
+figure_png=figures/v63_library_migration_suite.png
+status=success

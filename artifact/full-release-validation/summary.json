@@ -1,0 +1,31 @@
+{
+  "accepted_sources_coqchk_checked": 3036,
+  "audit_errors": [],
+  "coqchk_batches": 15,
+  "coqchk_failure": 0,
+  "decision_requests": 3221,
+  "expected_outcomes": {
+    "accepted_kernel_checked": 3036,
+    "safe_reject_compile_blocked": 120,
+    "safe_reject_policy_blocked": 65
+  },
+  "profile": "full",
+  "source_expectation_failures": 0,
+  "source_modules": 3220,
+  "status": "success",
+  "suites": [
+    "minimal-replay",
+    "seed-suite",
+    "generated-seed",
+    "policy-stress",
+    "relation-strength",
+    "large-generated",
+    "scaling",
+    "case-studies",
+    "library-migration",
+    "robustness-matrix",
+    "stdlib-interop",
+    "proof-maintenance",
+    "third-party-idiom"
+  ]
+}

@@ -1,0 +1,13 @@
+V64 robustness matrix
+total_rows=420
+accepted_kernel_checked=240
+safe_reject_compile_blocked=120
+safe_reject_policy_blocked=60
+unexpected=0
+coqc_success=300
+coqc_failure=120
+coqchk_success=240
+batch_coqchk_ms=95288.6
+coqc_ms=221201.8
+coqchk_ms=95280
+status=success

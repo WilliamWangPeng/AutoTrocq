@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.1.2 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.2.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -54,3 +54,20 @@ An invalid or incomplete specification exits with status 2. A policy-blocked
 specification also exits with status 2 but writes a manifest whose
 `policy_outcome` is `safe_reject` and whose `blocked_axioms` field explains
 the boundary.
+
+## Batch Contract
+
+`autotrocq batch SPEC_DIR --out BUILD_DIR` processes all top-level `*.json`
+files in lexical order. Each specification receives a separate output
+directory. The aggregate CSV uses mutually exclusive final outcomes:
+
+| Outcome | Meaning |
+| --- | --- |
+| `accepted_kernel_checked` | policy accepted; both `coqc` and `coqchk` returned 0 |
+| `safe_reject_policy_blocked` | one or more required axioms were not allowed |
+| `unexpected_invalid_spec` | the JSON package did not satisfy this contract |
+| `unexpected_kernel_failure` | an accepted generated package failed replay |
+
+The batch command exits successfully when all rows are either checked
+acceptances or policy-safe rejections. Either unexpected outcome makes it exit
+with status 1.

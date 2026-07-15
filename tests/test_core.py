@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from autotrocq.core import SpecError, generate, infer_strength, policy_decision
+from autotrocq.core import SpecError, batch, generate, infer_strength, policy_decision
 
 
 class StrengthTests(unittest.TestCase):
@@ -68,6 +68,41 @@ class GenerationTests(unittest.TestCase):
             self.assertEqual(report["source_spec"], "blocked.json")
             self.assertFalse((root / "build" / "BlockedPackage.v").exists())
             self.assertTrue((root / "build" / "BlockedPackage.manifest.json").is_file())
+
+
+class BatchTests(unittest.TestCase):
+    def test_batch_partitions_acceptance_and_safe_rejection(self):
+        accepted = {
+            "module": "AcceptedBatchPackage",
+            "source_type": "nat",
+            "target_type": "nat",
+            "relation": "eq",
+            "requested_strength": "plain",
+            "required_axioms": [],
+            "policy": {"allowed_axioms": []},
+            "definitions": [],
+            "laws": [],
+        }
+        blocked = dict(accepted)
+        blocked.update(
+            {
+                "module": "BlockedBatchPackage",
+                "required_axioms": ["functional_extensionality"],
+            }
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            specs = root / "specs"
+            specs.mkdir()
+            (specs / "accepted.json").write_text(json.dumps(accepted), encoding="utf-8")
+            (specs / "blocked.json").write_text(json.dumps(blocked), encoding="utf-8")
+            summary = batch(specs, root / "build", replay_accepted=False)
+            self.assertEqual(summary["status"], "success")
+            self.assertEqual(summary["specifications"], 2)
+            self.assertEqual(summary["outcomes"]["accepted_generated"], 1)
+            self.assertEqual(summary["outcomes"]["safe_reject_policy_blocked"], 1)
+            self.assertTrue((root / "build" / "batch_results.csv").is_file())
+            self.assertTrue((root / "build" / "batch_summary.json").is_file())
 
 
 if __name__ == "__main__":

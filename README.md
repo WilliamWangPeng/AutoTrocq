@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml/badge.svg)](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/WilliamWangPeng/AutoTrocq)](https://github.com/WilliamWangPeng/AutoTrocq/releases/latest)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21378178.svg)](https://doi.org/10.5281/zenodo.21378178)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21378177.svg)](https://doi.org/10.5281/zenodo.21378177)
 
 AutoTrocq is a research prototype for generating axiom-aware Coq relation
 packages and recording kernel-facing replay evidence. A JSON specification
@@ -11,14 +11,14 @@ axiom policy. AutoTrocq checks the finite relation-strength requirements,
 classifies policy violations as explicit safe rejections, emits a Coq module
 and manifest, and can run both `coqc` and `coqchk` on an accepted package.
 
-This repository accompanies the manuscript *AutoTrocq: Axiom-Aware Proof
-Transfer for CIC with Reproducible Coq Kernel Replay*.
+This repository accompanies the manuscript *AutoTrocq: Auditable
+Relation-Package Generation and Kernel Replay for Axiom-Aware Proof Transfer*.
 
 Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.1.2 is the current public research-prototype release. It implements
+Version 0.2.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -28,6 +28,8 @@ the evaluated evidence path for declarative relation packages:
 - deterministic Coq package and SHA-256 manifest generation;
 - `coqc` compilation followed by independent `coqchk` checking;
 - machine-readable generation and replay reports.
+- outcome-aware batch generation and replay with mutually exclusive accepted,
+  policy-blocked, compile-blocked, and unexpected-failure classifications.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -83,6 +85,21 @@ The command exits with status 2, writes a diagnostic manifest, and does not
 emit a Coq candidate. This is a safe rejection rather than a failed or hidden
 success.
 
+## Batch Evaluation
+
+The `batch` command applies the same boundary to every JSON specification in a
+directory and writes `batch_results.csv` plus `batch_summary.json`:
+
+```powershell
+autotrocq batch artifact/direct-cli-matrix/specs --out build/direct-matrix
+```
+
+The archived matrix contains 15 specifications: five relation strengths under
+constructive, explicitly allowed-axiom, and blocked-axiom policies. Ten
+accepted packages must pass both `coqc` and `coqchk`; five requests must be
+classified as policy-safe rejections. An invalid specification or failed
+kernel replay is an unexpected failure and makes the batch command fail.
+
 ## Specification Format
 
 Each JSON specification contains:
@@ -101,27 +118,35 @@ See [docs/SPECIFICATION.md](docs/SPECIFICATION.md) for the complete contract.
 ## Reproducing the Paper Evidence
 
 The small quickstart validates the complete generate-policy-compile-check
-path. The curated artifact subset in `artifact/` preserves the evaluated Coq
-sources, raw result tables, summaries, and replay entry points used by the
-paper. See [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected
-results.
+path. The `artifact/` directory preserves all 3,220 evaluated Coq source
+modules, the strict 3,221-request outcome ledger, raw result tables, the direct
+CLI matrix, and replay entry points used by the paper. See
+[ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Replay the 82-module curated profile:
+Replay the 82-module quick profile with outcome-aware expectations:
 
 ```powershell
 python scripts/replay_artifact.py --profile quick
 ```
 
-Replay the full 922-module public corpus, including the 840-module scaling
-suite:
+Replay all 3,220 source modules across 13 suites. The full profile requires
+3,036 accepted modules to compile and pass `coqchk`, requires 120 negative
+modules to fail compilation as designed, and retains 65 policy-safe rejection
+requests (64 source-backed and one diagnostic-only request):
 
 ```powershell
 python scripts/replay_artifact.py --profile full
 ```
 
-The replay is serial by default because sustained parallel Coq process creation
-is unreliable on some Windows installations. Use `--jobs N` only after
-validating the local runtime.
+The replay copies sources into `build/` before invoking Coq, so the archived
+source tree remains free of compiled objects. It is serial by default because
+sustained parallel Coq process creation is unreliable on some Windows
+installations. Use `--jobs N` only after validating the local runtime.
+
+The release also preserves the successful Coq 8.20.1 full-run outputs in
+`artifact/full-release-validation/`: 3,036 accepted-source rows, 120 expected
+compile-block rows, 15 successful `coqchk` batches, and the aggregate JSON
+summary. Per-module build logs and compiled objects are intentionally excluded.
 
 ## Development
 
@@ -137,4 +162,6 @@ different license.
 
 Citation metadata is provided in [CITATION.cff](CITATION.cff). The archived
 software release is permanently available as
-[doi:10.5281/zenodo.21378178](https://doi.org/10.5281/zenodo.21378178).
+[doi:10.5281/zenodo.21378177](https://doi.org/10.5281/zenodo.21378177). This
+concept DOI resolves to the latest archived release; Zenodo assigns a separate
+immutable DOI to each version.

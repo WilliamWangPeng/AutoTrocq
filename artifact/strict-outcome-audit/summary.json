@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "source_modules": 3220,
+  "decision_requests": 3221,
+  "accepted_kernel_checked": 3036,
+  "safe_reject_policy_blocked": 65,
+  "safe_reject_compile_blocked": 120,
+  "safe_reject_total": 185,
+  "unexpected_failure": 0,
+  "accepted_share_percent": 94.2564,
+  "safe_reject_share_percent": 5.7436,
+  "evidence_files_hashed": 3271,
+  "audit_errors": [],
+  "status": "success"
+}

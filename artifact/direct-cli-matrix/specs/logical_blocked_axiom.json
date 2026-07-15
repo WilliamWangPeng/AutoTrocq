@@ -1,0 +1,25 @@
+{
+  "module": "Matrix_Logical_BlockedAxiom",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "logical",
+  "required_axioms": [
+    "functional_extensionality"
+  ],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [
+    "Definition forward (x : Source) : Target := x.",
+    "Definition backward (x : Target) : Source := x."
+  ],
+  "laws": [
+    {
+      "name": "logical_law",
+      "kind": "logical",
+      "statement": "forall x : Source, transfer_rel x x",
+      "proof": "intro x. reflexivity."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+V66 proof-maintenance regression suite
+total_modules=480
+total_obligations=960
+coqc_success=480
+coqc_failure=0
+coqchk_success=480
+batch_coqchk_status=coqchk_success
+coqc_ms=287436
+batch_coqchk_ms=66741.2
+status=success

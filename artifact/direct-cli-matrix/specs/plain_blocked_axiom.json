@@ -1,0 +1,18 @@
+{
+  "module": "Matrix_Plain_BlockedAxiom",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "plain",
+  "required_axioms": [
+    "functional_extensionality"
+  ],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [
+    "Definition forward (x : Source) : Target := x.",
+    "Definition backward (x : Target) : Source := x."
+  ],
+  "laws": []
+}

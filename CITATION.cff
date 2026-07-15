@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use AutoTrocq, please cite the software and the accompanying paper."
 title: "AutoTrocq"
 type: software
-version: 0.1.2
+version: 0.2.0
 date-released: 2026-07-15
 authors:
   - family-names: Wang
@@ -13,6 +13,6 @@ authors:
   - family-names: Yan
     given-names: Bingheng
 license: MIT
-doi: 10.5281/zenodo.21378178
+doi: 10.5281/zenodo.21378177
 repository-code: "https://github.com/WilliamWangPeng/AutoTrocq"
-url: "https://github.com/WilliamWangPeng/AutoTrocq/releases/tag/v0.1.2"
+url: "https://github.com/WilliamWangPeng/AutoTrocq/releases/tag/v0.2.0"

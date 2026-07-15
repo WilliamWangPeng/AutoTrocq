@@ -1,0 +1,9 @@
+(* V64 robustness-matrix module *)
+Module V64_REJECT_BAD_LENGTH_005.
+Require Import Coq.Lists.List.
+Import ListNotations.
+Fixpoint len_325 (xs : list nat) : nat := match xs with [] => 0 | _ :: rest => S (len_325 rest) end.
+Theorem bad_length_325 : forall x xs, len_325 (x :: xs) = len_325 xs.
+Proof. intros x xs; reflexivity. Qed.
+End V64_REJECT_BAD_LENGTH_005.
+

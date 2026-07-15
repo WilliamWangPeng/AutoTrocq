@@ -1,0 +1,8 @@
+seed_family,file,status,coqc_version,log
+unary_binary_naturals,B1_UNARY_BINARY_NAT.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/unary_binary_naturals.log
+modulo_arithmetic,B2_MODULO_ARITH.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/modulo_arithmetic.log
+refined_lists,D2_LIST_REFINED_ELEMENTS.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/refined_lists.log
+vectors_tuples,D3_VECTOR_TUPLE.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/vectors_tuples.log
+finite_maps_environments,E1_FINMAP_ENV.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/finite_maps_environments.log
+extended_nonnegative_quantities,F1_EXT_NNREAL.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/extended_nonnegative_quantities.log
+small_typed_syntax,G1_TYPED_SYNTAX.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/small_typed_syntax.log

@@ -1,0 +1,5 @@
+target,file,status,coqc_version,log
+D1-NAT-000,D1_NAT_000.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/D1-NAT-000.log
+D2-LIST-RET-005,D2_LIST_RET_005.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/D2-LIST-RET-005.log
+D3-VECTOR-006,D3_VECTOR_006.v,kernel_success,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/D3-VECTOR-006.log
+A1-LEM-010,A1_LEM_010.v,safe_reject_witness,"The Coq Proof Assistant, version 8.18.0 compiled with OCaml 4.14.1 ",logs/A1-LEM-010.log

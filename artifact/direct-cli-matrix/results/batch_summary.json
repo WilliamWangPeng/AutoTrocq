@@ -1,0 +1,19 @@
+{
+  "outcomes": {
+    "accepted_kernel_checked": 10,
+    "safe_reject_policy_blocked": 5
+  },
+  "relation_strengths": {
+    "equivalence": 3,
+    "logical": 3,
+    "plain": 3,
+    "retraction": 3,
+    "section": 3
+  },
+  "replay_accepted": true,
+  "results_csv": "batch_results.csv",
+  "schema_version": 1,
+  "specifications": 15,
+  "status": "success",
+  "unexpected_failures": 0
+}

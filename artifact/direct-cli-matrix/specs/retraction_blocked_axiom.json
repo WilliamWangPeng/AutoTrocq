@@ -1,0 +1,25 @@
+{
+  "module": "Matrix_Retraction_BlockedAxiom",
+  "source_type": "nat",
+  "target_type": "nat",
+  "relation": "eq",
+  "requested_strength": "retraction",
+  "required_axioms": [
+    "functional_extensionality"
+  ],
+  "policy": {
+    "allowed_axioms": []
+  },
+  "definitions": [
+    "Definition forward (x : Source) : Target := x.",
+    "Definition backward (x : Target) : Source := x."
+  ],
+  "laws": [
+    {
+      "name": "retraction_law",
+      "kind": "retraction",
+      "statement": "forall x : Target, forward (backward x) = x",
+      "proof": "intro x. reflexivity."
+    }
+  ]
+}
