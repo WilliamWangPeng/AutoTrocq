@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.2 - 2026-07-15
+
+- Add complete Zenodo release metadata and enable persistent software archiving.
+- Preserve the validated command semantics and 922-module replay corpus.
+
 ## 0.1.1 - 2026-07-14
 
 - Publish a clean release tag after validating the Linux CI workflow.
