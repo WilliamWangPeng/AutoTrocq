@@ -2,6 +2,7 @@
 
 [![CI](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml/badge.svg)](https://github.com/WilliamWangPeng/AutoTrocq/actions/workflows/ci.yml)
 [![Release](https://img.shields.io/github/v/release/WilliamWangPeng/AutoTrocq)](https://github.com/WilliamWangPeng/AutoTrocq/releases/latest)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21378178.svg)](https://doi.org/10.5281/zenodo.21378178)
 
 AutoTrocq is a research prototype for generating axiom-aware Coq relation
 packages and recording kernel-facing replay evidence. A JSON specification
@@ -134,6 +135,6 @@ different license.
 
 ## Citation
 
-Citation metadata is provided in [CITATION.cff](CITATION.cff). A persistent
-archive DOI will be added to the metadata after the public repository release
-is deposited in Zenodo.
+Citation metadata is provided in [CITATION.cff](CITATION.cff). The archived
+software release is permanently available as
+[doi:10.5281/zenodo.21378178](https://doi.org/10.5281/zenodo.21378178).

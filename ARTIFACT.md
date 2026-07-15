@@ -1,5 +1,7 @@
 # Artifact Guide
 
+Persistent software archive: https://doi.org/10.5281/zenodo.21378178
+
 ## Evaluation Boundary
 
 AutoTrocq separates four outcomes that should not be collapsed:
