@@ -1,8 +1,8 @@
 {
   "title": "AutoTrocq: Auditable Relation-Package Generation and Kernel Replay",
   "description": "Research prototype and complete reproducibility artifact for axiom-aware Coq relation-package generation, mutually exclusive outcome auditing, and kernel replay.",
-  "version": "0.2.0",
-  "publication_date": "2026-07-15",
+  "version": "0.2.1",
+  "publication_date": "2026-07-21",
   "creators": [
     {"name": "Wang, Peng", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},
     {"name": "Qi, Kaiyuan", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},

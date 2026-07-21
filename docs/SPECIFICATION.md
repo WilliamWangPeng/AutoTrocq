@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.2.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.2.1 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 

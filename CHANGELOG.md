@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.2.1 - 2026-07-21
+
+- Add a Coq mechanization of axiom-policy monotonicity and the four-way
+  outcome semantics.
+- Prove accepted-outcome soundness, outcome disjointness and exhaustiveness,
+  and the finite-ledger counting identity.
+- Record successful Coq 8.20.1 compilation and independent `coqchk`
+  verification for the metatheory module.
+- Preserve the 3,221-request empirical ledger and full replay results.
+
 ## 0.2.0 - 2026-07-15
 
 - Add outcome-aware `autotrocq batch` generation and kernel replay.
