@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 - 2026-07-22
+
+- Add a compositional proof-transfer certificate calculus mechanized in Coq.
+- Prove preservation, relation witnessing, exact composed-policy admission,
+  axiom-free conservation, associativity, and identity laws.
+- Add `autotrocq compose-policy` for exact requirement-union decisions.
+- Exhaustively validate 32,768 two-stage policy configurations over five
+  axiom names with zero implementation/theorem mismatches.
+- Add two concrete kernel-checked certificate-composition examples.
+
 ## 0.2.1 - 2026-07-21
 
 - Add a Coq mechanization of axiom-policy monotonicity and the four-way

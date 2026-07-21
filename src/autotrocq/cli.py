@@ -6,7 +6,16 @@ import sys
 from pathlib import Path
 
 from . import __version__
-from .core import SpecError, batch, doctor, generate, replay
+from .core import (
+    SpecError,
+    batch,
+    composition_policy_decision,
+    doctor,
+    generate,
+    load_spec,
+    replay,
+    validate_spec,
+)
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -34,6 +43,18 @@ def _parser() -> argparse.ArgumentParser:
         "--no-replay",
         action="store_true",
         help="generate and classify packages without invoking coqc or coqchk",
+    )
+
+    compose_parser = commands.add_parser(
+        "compose-policy",
+        help="check one axiom policy against the exact requirement union of a package chain",
+    )
+    compose_parser.add_argument("specs", nargs="+", type=Path)
+    compose_parser.add_argument(
+        "--allowed-axiom",
+        action="append",
+        default=[],
+        help="permit one axiom name; repeat the option to permit several axioms",
     )
 
     commands.add_parser("doctor", help="report required executable versions")
@@ -66,6 +87,20 @@ def main(argv: list[str] | None = None) -> int:
             result = batch(args.spec_dir, args.out, replay_accepted=not args.no_replay)
             print(json.dumps(result, indent=2, sort_keys=True))
             return 0 if result["status"] == "success" else 1
+        if args.command == "compose-policy":
+            specs = [load_spec(path) for path in args.specs]
+            modules = [validate_spec(spec)[0] for spec in specs]
+            decision = composition_policy_decision(specs, args.allowed_axiom)
+            result = {
+                "schema_version": 1,
+                "modules": modules,
+                "required_axioms": list(decision.required_axioms),
+                "allowed_axioms": sorted(set(args.allowed_axiom)),
+                "blocked_axioms": list(decision.blocked_axioms),
+                "policy_outcome": decision.outcome,
+            }
+            print(json.dumps(result, indent=2, sort_keys=True))
+            return 0 if decision.outcome == "accept" else 2
         print(json.dumps(doctor(), indent=2, sort_keys=True))
         return 0
     except SpecError as exc:

@@ -1,9 +1,17 @@
 import json
+import itertools
 import tempfile
 import unittest
 from pathlib import Path
 
-from autotrocq.core import SpecError, batch, generate, infer_strength, policy_decision
+from autotrocq.core import (
+    SpecError,
+    batch,
+    composition_policy_decision,
+    generate,
+    infer_strength,
+    policy_decision,
+)
 
 
 class StrengthTests(unittest.TestCase):
@@ -23,6 +31,34 @@ class PolicyTests(unittest.TestCase):
         )
         self.assertEqual(decision.outcome, "safe_reject")
         self.assertEqual(decision.blocked_axioms, ("funext",))
+
+    def test_composition_policy_uses_exact_requirement_union(self):
+        first = {"required_axioms": ["funext"]}
+        second = {"required_axioms": ["propext", "funext"]}
+        accepted = composition_policy_decision([first, second], ["funext", "propext"])
+        blocked = composition_policy_decision([first, second], ["funext"])
+        self.assertEqual(accepted.outcome, "accept")
+        self.assertEqual(accepted.required_axioms, ("funext", "propext"))
+        self.assertEqual(blocked.outcome, "safe_reject")
+        self.assertEqual(blocked.blocked_axioms, ("propext",))
+
+    def test_composition_policy_matches_stagewise_admission_exhaustively(self):
+        universe = tuple(f"a{i}" for i in range(5))
+        subsets = [
+            set(items)
+            for size in range(len(universe) + 1)
+            for items in itertools.combinations(universe, size)
+        ]
+        for first_required in subsets:
+            for second_required in subsets:
+                specs = [
+                    {"required_axioms": sorted(first_required)},
+                    {"required_axioms": sorted(second_required)},
+                ]
+                for allowed in subsets:
+                    observed = composition_policy_decision(specs, sorted(allowed))
+                    expected = first_required <= allowed and second_required <= allowed
+                    self.assertEqual(observed.outcome == "accept", expected)
 
 
 class GenerationTests(unittest.TestCase):

@@ -11,14 +11,14 @@ axiom policy. AutoTrocq checks the finite relation-strength requirements,
 classifies policy violations as explicit safe rejections, emits a Coq module
 and manifest, and can run both `coqc` and `coqchk` on an accepted package.
 
-This repository accompanies the manuscript *AutoTrocq: Auditable
-Relation-Package Generation and Kernel Replay for Axiom-Aware Proof Transfer*.
+This repository accompanies the manuscript *Compositional Proof-Transfer
+Certificates with Exact Axiom Accounting*.
 
 Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.2.1 is the current research-prototype release. It implements
+Version 0.3.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -31,6 +31,10 @@ the evaluated evidence path for declarative relation packages:
 - outcome-aware batch generation and replay with mutually exclusive accepted,
   policy-blocked, compile-blocked, and unexpected-failure classifications.
 - a Coq mechanization of policy monotonicity and the finite outcome partition.
+- a Coq certificate calculus with proof-preserving relational composition,
+  exact axiom-union admission, conservation, associativity, and identities;
+- an executable `compose-policy` command and an exhaustive 32,768-case
+  conformance audit over a five-axiom universe.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -86,6 +90,24 @@ The command exits with status 2, writes a diagnostic manifest, and does not
 emit a Coq candidate. This is a safe rejection rather than a failed or hidden
 success.
 
+## Composed Policy Decisions
+
+Apply one policy to the exact union of a certificate chain's requirements:
+
+```powershell
+autotrocq compose-policy examples/bool_nat_section.json `
+  examples/blocked_axiom.json `
+  --allowed-axiom propositional_extensionality
+```
+
+The command validates every stage, deduplicates the requirement union, and
+reports either `accept` or `safe_reject`. Re-run the exhaustive implementation
+audit with:
+
+```powershell
+python scripts/run_composition_policy_audit.py
+```
+
 ## Batch Evaluation
 
 The `batch` command applies the same boundary to every JSON specification in a
@@ -124,12 +146,14 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check the outcome-semantics metatheory independently:
+Check both mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
 coqc -q AutoTrocqOutcomeSemantics.v
 coqchk -silent AutoTrocqOutcomeSemantics
+coqc -q AutoTrocqComposition.v
+coqchk -silent AutoTrocqComposition
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:

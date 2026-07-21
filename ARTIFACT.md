@@ -50,7 +50,10 @@ the reported workflow without carrying compiled Coq objects:
 - `full-release-validation/`: outcome-aware Coq 8.20.1 full-run CSV and JSON
   summaries for all 3,220 sources and 15 `coqchk` batches;
 - `metatheory/`: Coq proofs of policy monotonicity, classification soundness,
-  disjointness, exhaustiveness, and the finite outcome-count partition;
+  disjointness, exhaustiveness, the finite outcome-count partition, and
+  compositional proof-transfer certificates;
+- `composition_policy/`: exhaustive 32,768-case implementation/theorem
+  conformance summary and mismatch ledger;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
 
 The complete corpus contains 3,220 `.v` files. Its strict ledger contains
@@ -62,9 +65,16 @@ before a Coq source file is generated. The outcomes are mutually exclusive:
 Generated `.vo`, `.glob`, `.vok`, and `.vos` files are excluded. Reviewers
 recreate them locally with the replay scripts.
 
-The metatheory source contains eight completed lemmas or theorems. Run
-`coqc -q AutoTrocqOutcomeSemantics.v` followed by
-`coqchk -silent AutoTrocqOutcomeSemantics` from `artifact/metatheory/`.
+The outcome metatheory contains eight completed results. The composition
+metatheory contains 17 lemmas, theorems, or corollaries plus two concrete
+examples. From `artifact/metatheory/`, compile and check both modules:
+
+```text
+coqc -q AutoTrocqOutcomeSemantics.v
+coqchk -silent AutoTrocqOutcomeSemantics
+coqc -q AutoTrocqComposition.v
+coqchk -silent AutoTrocqComposition
+```
 
 ## Trust Statement
 

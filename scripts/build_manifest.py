@@ -21,7 +21,14 @@ def main() -> None:
     root = Path(__file__).resolve().parents[1]
     output = root / "MANIFEST_SHA256.csv"
     files: list[Path] = []
-    skipped_dirs = {".git", "build", "dist", "__pycache__", ".pytest_cache"}
+    skipped_dirs = {
+        ".git",
+        "build",
+        "dist",
+        "__pycache__",
+        ".pytest_cache",
+        ".lia.cache",
+    }
     skipped_suffixes = (".pyc", ".aux", ".vo", ".vok", ".vos", ".glob")
     for directory, dirnames, filenames in os.walk(root):
         dirnames[:] = [
@@ -32,7 +39,11 @@ def main() -> None:
         parent = Path(directory)
         for filename in filenames:
             path = parent / filename
-            if path != output and not filename.endswith(skipped_suffixes):
+            if (
+                path != output
+                and filename != ".lia.cache"
+                and not filename.endswith(skipped_suffixes)
+            ):
                 files.append(path)
     files.sort()
     with output.open("w", newline="", encoding="utf-8") as handle:

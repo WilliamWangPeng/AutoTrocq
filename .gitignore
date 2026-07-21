@@ -10,3 +10,5 @@ dist/
 *.glob
 *.aux
 .pytest_cache/
+.lia.cache/
+.lia.cache

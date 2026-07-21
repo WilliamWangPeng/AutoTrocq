@@ -1,0 +1,11 @@
+{
+  "accepted": 3125,
+  "axiom_universe_size": 5,
+  "blocked": 29643,
+  "cases": 32768,
+  "law": "union(E1,E2) subset Pi iff E1 subset Pi and E2 subset Pi",
+  "mismatches": 0,
+  "schema_version": 1,
+  "status": "success",
+  "subsets": 32
+}

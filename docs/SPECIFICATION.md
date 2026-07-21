@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.2.1 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.3.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -71,3 +71,16 @@ directory. The aggregate CSV uses mutually exclusive final outcomes:
 The batch command exits successfully when all rows are either checked
 acceptances or policy-safe rejections. Either unexpected outcome makes it exit
 with status 1.
+
+## Composition Policy Contract
+
+`autotrocq compose-policy SPEC... --allowed-axiom NAME...` validates every
+stage specification and computes the deduplicated union of all
+`required_axioms` fields. The chain is accepted exactly when that union is a
+subset of the command-line allow list. The JSON result records stage modules,
+the requirement union, the allow list, blocked axioms, and `policy_outcome`.
+
+This command accounts for declared requirements. It does not infer the
+transitive axiom footprint of the embedded Coq terms. The corresponding
+composition and exact-admission theorems are mechanized in
+`artifact/metatheory/AutoTrocqComposition.v`.
