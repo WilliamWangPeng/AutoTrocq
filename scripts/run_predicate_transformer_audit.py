@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import argparse
 import csv
 import itertools
 import json
@@ -45,6 +46,14 @@ def strongest_post(carrier: Carrier, relation: Relation, pre: Predicate) -> Pred
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Exhaustively check finite predicate-transformer laws."
+    )
+    parser.add_argument(
+        "--out", type=Path, default=Path("artifact/predicate_transformers")
+    )
+    args = parser.parse_args()
+
     carrier: Carrier = (0, 1)
     predicates = [frozenset(x) for x in powerset(tuple(carrier))]
     pairs = tuple((a, b) for a in carrier for b in carrier)
@@ -93,7 +102,7 @@ def main() -> int:
                         {"law": "sp_wp_galois", "direct": str(left), "staged": str(right)}
                     )
 
-    output = Path("artifact/predicate_transformers")
+    output = args.out
     output.mkdir(parents=True, exist_ok=True)
     fields = ["law", "direct", "staged"]
     with (output / "mismatches.csv").open("w", encoding="utf-8", newline="") as handle:
