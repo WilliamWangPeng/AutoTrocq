@@ -28,7 +28,10 @@ jobs:
             python3 --version
             endGroup
             export PYTHONPATH="$PWD/src"
-            pushd artifact/metatheory
+            rm -rf /tmp/autotrocq-metatheory
+            mkdir -p /tmp/autotrocq-metatheory
+            cp artifact/metatheory/*.v /tmp/autotrocq-metatheory/
+            pushd /tmp/autotrocq-metatheory
             coqc -q AutoTrocqOutcomeSemantics.v
             coqchk -silent AutoTrocqOutcomeSemantics
             coqc -q AutoTrocqComposition.v
