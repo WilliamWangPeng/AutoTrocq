@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.1 - 2026-07-22
+
+- Make the predicate-transformer audit honor its `--out` directory so CI and
+  reviewers can run it without writing into the source checkout.
+- Compile Coq CI sources in a writable temporary directory while preserving
+  independent `coqchk` verification.
+
 ## 0.4.0 - 2026-07-22
 
 - Strengthen certificate preservation from the selected function image to
