@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.3.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.4.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -84,3 +84,11 @@ This command accounts for declared requirements. It does not infer the
 transitive axiom footprint of the embedded Coq terms. The corresponding
 composition and exact-admission theorems are mechanized in
 `artifact/metatheory/AutoTrocqComposition.v`.
+
+The relational certificate contract quantifies preservation over every target
+admitted by the declared relation, rather than only over the selected function
+image. `AutoTrocqPredicateTransformers.v` characterizes this obligation by
+weakest preconditions and strongest postconditions, proves their exact
+composition and Galois laws, and records an image-only counterexample. These
+results concern explicit relations and predicates; they do not synthesize a
+relation from arbitrary CIC terms.

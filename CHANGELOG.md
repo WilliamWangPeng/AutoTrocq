@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.4.0 - 2026-07-22
+
+- Strengthen certificate preservation from the selected function image to
+  every target admitted by the certificate relation.
+- Add weakest-precondition and strongest-postcondition semantics for transfer
+  relations, with exact composition, identity, monotonicity, and Galois laws.
+- Mechanize 38 generic results and five concrete examples across three Coq
+  modules and verify every module independently with `coqchk`.
+- Exhaustively validate 2,304 finite predicate-transformer identities with
+  zero mismatches, including a counterexample to image-only preservation.
+
 ## 0.3.0 - 2026-07-22
 
 - Add a compositional proof-transfer certificate calculus mechanized in Coq.

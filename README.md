@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.3.0 is the current research-prototype release. It implements
+Version 0.4.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -35,6 +35,10 @@ the evaluated evidence path for declarative relation packages:
   exact axiom-union admission, conservation, associativity, and identities;
 - an executable `compose-policy` command and an exhaustive 32,768-case
   conformance audit over a five-axiom universe.
+- relational weakest-precondition and strongest-postcondition semantics, exact
+  composition laws, and a Galois correspondence mechanized in Coq;
+- a 2,304-case finite predicate-transformer audit and a checked counterexample
+  showing why preservation of only the selected image is insufficient.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -106,6 +110,7 @@ audit with:
 
 ```powershell
 python scripts/run_composition_policy_audit.py
+python scripts/run_predicate_transformer_audit.py
 ```
 
 ## Batch Evaluation
@@ -146,7 +151,7 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check both mechanized developments independently:
+Check all three mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
@@ -154,6 +159,8 @@ coqc -q AutoTrocqOutcomeSemantics.v
 coqchk -silent AutoTrocqOutcomeSemantics
 coqc -q AutoTrocqComposition.v
 coqchk -silent AutoTrocqComposition
+coqc -q AutoTrocqPredicateTransformers.v
+coqchk -silent AutoTrocqPredicateTransformers
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:

@@ -86,14 +86,14 @@ Section Certificates.
     transfer : A -> B;
     transfer_relation : A -> B -> Prop;
     transfer_related : forall a, transfer_relation a (transfer a);
-    transfer_preserves : forall a, Pre a -> Post (transfer a);
+    relation_preserves : forall a b, Pre a -> transfer_relation a b -> Post b;
     required_axioms : Ax -> Prop
   }.
 
   Arguments transfer {A B Pre Post} _ _.
   Arguments transfer_relation {A B Pre Post} _ _ _.
   Arguments transfer_related {A B Pre Post} _ _.
-  Arguments transfer_preserves {A B Pre Post} _ _ _.
+  Arguments relation_preserves {A B Pre Post} _ _ _ _ _.
   Arguments required_axioms {A B Pre Post} _ _.
 
   Definition identity_certificate {A : Type} (P : A -> Prop) :
@@ -103,8 +103,17 @@ Section Certificates.
               transfer_relation := eq;
               required_axioms := empty |}.
     - intro a; reflexivity.
-    - auto.
+    - intros a b Hpre Heq; subst; assumption.
   Defined.
+
+  Theorem certificate_transfer_preserves
+      {A B : Type} {Pre : A -> Prop} {Post : B -> Prop}
+      (cert : @certificate A B Pre Post) :
+    forall a, Pre a -> Post (transfer cert a).
+  Proof.
+    intros a Hpre.
+    eapply relation_preserves; [exact Hpre | apply transfer_related].
+  Qed.
 
   Definition compose_certificate
       {A B C : Type} {Pre : A -> Prop} {Mid : B -> Prop} {Post : C -> Prop}
@@ -120,8 +129,10 @@ Section Certificates.
            union (required_axioms first) (required_axioms second) |}.
     - intro a.
       exists (transfer first a); split; apply transfer_related.
-    - intros a Hpre.
-      apply transfer_preserves, transfer_preserves, Hpre.
+    - intros a c Hpre [b [Hfirst Hsecond]].
+      apply (relation_preserves second b c).
+      + apply (relation_preserves first a b); assumption.
+      + exact Hsecond.
   Defined.
 
   Theorem composition_preserves
@@ -129,7 +140,7 @@ Section Certificates.
       (first : @certificate A B Pre Mid)
       (second : @certificate B C Mid Post) :
     forall a, Pre a -> Post (transfer (compose_certificate first second) a).
-  Proof. apply transfer_preserves. Qed.
+  Proof. apply certificate_transfer_preserves. Qed.
 
   Theorem composition_related
       {A B C : Type} {Pre : A -> Prop} {Mid : B -> Prop} {Post : C -> Prop}
@@ -250,7 +261,8 @@ Section ConcreteChain.
               transfer_relation := fun n o => o = Some n;
               required_axioms := empty |}.
     - reflexivity.
-    - intros n _; exists n; reflexivity.
+    - intros n o _ Ho; subst o.
+      exists n; reflexivity.
   Defined.
 
   Definition option_to_list :
@@ -261,8 +273,8 @@ Section ConcreteChain.
                 match o with Some n => xs = n :: nil | None => xs = nil end;
               required_axioms := empty |}.
     - intro o; destruct o; reflexivity.
-    - intros o [n Ho]; subst o.
-      exists n, nil; reflexivity.
+    - intros o xs [n Ho] Hrel; subst o.
+      exists n, nil; exact Hrel.
   Defined.
 
   Example concrete_chain_preserves :

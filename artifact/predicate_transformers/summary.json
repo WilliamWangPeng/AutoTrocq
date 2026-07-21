@@ -1,0 +1,12 @@
+{
+  "carrier_size": 2,
+  "galois_connection_cases": 256,
+  "mismatches": 0,
+  "predicates": 4,
+  "relations": 16,
+  "schema_version": 1,
+  "status": "success",
+  "strongest_post_composition_cases": 1024,
+  "total_cases": 2304,
+  "weakest_pre_composition_cases": 1024
+}

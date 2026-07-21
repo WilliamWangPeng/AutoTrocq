@@ -51,9 +51,12 @@ the reported workflow without carrying compiled Coq objects:
   summaries for all 3,220 sources and 15 `coqchk` batches;
 - `metatheory/`: Coq proofs of policy monotonicity, classification soundness,
   disjointness, exhaustiveness, the finite outcome-count partition, and
-  compositional proof-transfer certificates;
+  compositional proof-transfer certificates, including weakest-precondition
+  and strongest-postcondition characterizations;
 - `composition_policy/`: exhaustive 32,768-case implementation/theorem
   conformance summary and mismatch ledger;
+- `predicate_transformers/`: exhaustive 2,304-case finite audit of exact
+  predicate-transformer composition and the Galois correspondence;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
 
 The complete corpus contains 3,220 `.v` files. Its strict ledger contains
@@ -66,14 +69,17 @@ Generated `.vo`, `.glob`, `.vok`, and `.vos` files are excluded. Reviewers
 recreate them locally with the replay scripts.
 
 The outcome metatheory contains eight completed results. The composition
-metatheory contains 17 lemmas, theorems, or corollaries plus two concrete
-examples. From `artifact/metatheory/`, compile and check both modules:
+metatheory contains 18 generic results plus two concrete examples, and the
+predicate-transformer metatheory contains 12 generic results plus three
+examples. From `artifact/metatheory/`, compile and check all three modules:
 
 ```text
 coqc -q AutoTrocqOutcomeSemantics.v
 coqchk -silent AutoTrocqOutcomeSemantics
 coqc -q AutoTrocqComposition.v
 coqchk -silent AutoTrocqComposition
+coqc -q AutoTrocqPredicateTransformers.v
+coqchk -silent AutoTrocqPredicateTransformers
 ```
 
 ## Trust Statement
