@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.2.0 is the current research-prototype release. It implements
+Version 0.2.1 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -30,6 +30,7 @@ the evaluated evidence path for declarative relation packages:
 - machine-readable generation and replay reports.
 - outcome-aware batch generation and replay with mutually exclusive accepted,
   policy-blocked, compile-blocked, and unexpected-failure classifications.
+- a Coq mechanization of policy monotonicity and the finite outcome partition.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -122,6 +123,14 @@ path. The `artifact/` directory preserves all 3,220 evaluated Coq source
 modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
+
+Check the outcome-semantics metatheory independently:
+
+```powershell
+cd artifact/metatheory
+coqc -q AutoTrocqOutcomeSemantics.v
+coqchk -silent AutoTrocqOutcomeSemantics
+```
 
 Replay the 82-module quick profile with outcome-aware expectations:
 
