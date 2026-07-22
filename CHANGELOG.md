@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.7.0 - 2026-07-22
+
+- Lift stagewise cut completeness from two relations to arbitrary finite
+  heterogeneous relation paths whose intermediate carriers are type indexed.
+- Prove exact whole-path weakest-precondition and strongest-postcondition
+  semantics and both validity characterizations.
+- Construct canonical backward weakest-precondition cuts and forward
+  strongest-postcondition cuts for every finite path.
+- Add nine generic Coq results, two heterogeneous examples, and a 297,092-check
+  exhaustive finite audit with zero mismatches.
+
 ## 0.6.0 - 2026-07-22
 
 - Prove contextual full abstraction: relation refinement is equivalent to

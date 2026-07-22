@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.6.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.7.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -108,3 +108,11 @@ the relation from either transformer, constructs a separating predicate
 context for every non-refining edge, and proves that contextual refinement is
 preserved by relational composition. These results are constructive and do
 not assume finite carriers or decidable equality.
+
+`AutoTrocqFiniteChains.v` lifts the two-stage cut result to arbitrary finite
+heterogeneous paths. Its indexed path type records every intermediate carrier,
+so ill-typed compositions cannot be represented. Endpoint validity is
+equivalent to existence of a complete sequence of stage-valid predicates, and
+iterated weakest preconditions and strongest postconditions give canonical
+backward and forward cut sequences. The theorem is constructive and imposes no
+finiteness or decidability assumption on the carriers.

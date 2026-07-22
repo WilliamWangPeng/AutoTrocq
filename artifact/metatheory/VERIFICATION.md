@@ -4,7 +4,7 @@
 - Coq: 8.20.1
 - Sources: `AutoTrocqOutcomeSemantics.v`, `AutoTrocqComposition.v`,
   `AutoTrocqPredicateTransformers.v`, `AutoTrocqIntermediateAssertions.v`, and
-  `AutoTrocqFullAbstraction.v`
+  `AutoTrocqFullAbstraction.v`, and `AutoTrocqFiniteChains.v`
 - `coqc -q AutoTrocqOutcomeSemantics.v`: exit status 0
 - `coqchk -silent AutoTrocqOutcomeSemantics`: exit status 0
 - `coqc -q AutoTrocqComposition.v`: exit status 0
@@ -15,6 +15,8 @@
 - `coqchk -silent AutoTrocqIntermediateAssertions`: exit status 0
 - `coqc -q AutoTrocqFullAbstraction.v`: exit status 0
 - `coqchk -silent AutoTrocqFullAbstraction`: exit status 0
+- `coqc -q AutoTrocqFiniteChains.v`: exit status 0
+- `coqchk -silent AutoTrocqFiniteChains`: exit status 0
 
 The source proves three policy-order lemmas, policy-block classification,
 accepted-outcome soundness, classification exhaustiveness, constructor
@@ -53,3 +55,11 @@ semantics; a constructive separating context for a missing edge; and
 compositionality of relational and contextual refinement. Three Boolean
 examples check strict refinement, failure of the converse, and the generated
 separator.
+
+The finite-chain source proves nine generic results: endpoint validity is
+equivalent to existence of a complete stagewise cut sequence for every finite
+heterogeneous relation path; recursive weakest preconditions and strongest
+postconditions exactly characterize the endpoint relation; both transformer
+orders characterize validity; and canonical backward and forward cut
+sequences always exist. Two examples instantiate a path from `nat` through
+`option nat` to `list nat`.

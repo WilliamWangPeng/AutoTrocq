@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.6.0 is the current research-prototype release. It implements
+Version 0.7.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -48,6 +48,10 @@ the evaluated evidence path for declarative relation packages:
   valid predicate-transfer judgments, and exact `sp`/`wp` transformer orders;
 - constructive separating contexts, compositional contextual refinement, and
   a 19,105-check exhaustive finite audit with zero mismatches.
+- arbitrary finite heterogeneous relation paths, complete stagewise cut
+  sequences, exact iterated `wp`/`sp` semantics, and canonical backward and
+  forward cuts, all mechanized in Coq;
+- a 297,092-check exhaustive finite-chain audit with zero mismatches.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -122,6 +126,7 @@ python scripts/run_composition_policy_audit.py
 python scripts/run_predicate_transformer_audit.py
 python scripts/run_intermediate_assertion_audit.py
 python scripts/run_full_abstraction_audit.py
+python scripts/run_finite_chain_audit.py
 ```
 
 ## Batch Evaluation
@@ -162,7 +167,7 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check all five mechanized developments independently:
+Check all six mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
@@ -176,6 +181,8 @@ coqc -q AutoTrocqIntermediateAssertions.v
 coqchk -silent AutoTrocqIntermediateAssertions
 coqc -q AutoTrocqFullAbstraction.v
 coqchk -silent AutoTrocqFullAbstraction
+coqc -q AutoTrocqFiniteChains.v
+coqchk -silent AutoTrocqFiniteChains
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:

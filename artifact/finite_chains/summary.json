@@ -1,0 +1,19 @@
+{
+  "backward_cut_checks": 17476,
+  "carrier_size": 2,
+  "chains": 4369,
+  "endpoint_relation_checks": 17476,
+  "forward_cut_checks": 17476,
+  "maximum_chain_length": 3,
+  "mismatches": 0,
+  "predicates": 4,
+  "relations": 16,
+  "schema_version": 1,
+  "status": "success",
+  "strongest_post_checks": 17476,
+  "total_checks": 297092,
+  "validity_cut_checks": 69904,
+  "validity_sp_checks": 69904,
+  "validity_wp_checks": 69904,
+  "weakest_pre_checks": 17476
+}
