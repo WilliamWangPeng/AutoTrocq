@@ -5,9 +5,13 @@
   "append_transfer_checks": 651050,
   "axiom_free_checks": 1365,
   "carrier_size": 2,
+  "category_associativity_checks": 472704,
+  "category_identity_checks": 1560,
   "certificate_chains": 82291,
+  "effect_associativity_checks": 128,
   "effect_atoms": 2,
   "effect_chains": 1365,
+  "effect_identity_checks": 16,
   "endpoint_relation_checks": 329164,
   "endpoint_validity_checks": 82290,
   "folded_transfer_checks": 164582,
@@ -22,6 +26,6 @@
   "selected_preservation_checks": 164582,
   "selected_related_checks": 164582,
   "status": "success",
-  "total_checks": 2883379,
+  "total_checks": 3357787,
   "valid_stages": 130
 }

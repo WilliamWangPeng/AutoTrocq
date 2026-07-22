@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.8.0 is the current research-prototype release. It implements
+Version 0.9.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -59,7 +59,9 @@ the evaluated evidence path for declarative relation packages:
   requirement observations;
 - a compositional observational equivalence on certificates, with equivalence,
   composition-congruence, identity, and fold-functor laws mechanized in Coq;
-- a 2,883,379-check exhaustive certificate-chain audit with zero mismatches.
+- category laws for predicate-indexed certificates modulo observational
+  equivalence, and empty, singleton, and concatenated free-path fold laws;
+- a 3,357,787-check exhaustive certificate-chain audit with zero mismatches.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package

@@ -381,6 +381,72 @@ Section Chains.
       (identity_certificate P).
   Proof. apply certificate_equiv_reflexive. Qed.
 
+  Theorem composition_associative_equiv
+      {A B C D : Type}
+      {P : A -> Prop} {Q : B -> Prop}
+      {R : C -> Prop} {S : D -> Prop}
+      (ab : @certificate Ax A B P Q)
+      (bc : @certificate Ax B C Q R)
+      (cd : @certificate Ax C D R S) :
+    certificate_equiv
+      (compose_certificate (compose_certificate ab bc) cd)
+      (compose_certificate ab (compose_certificate bc cd)).
+  Proof.
+    unfold certificate_equiv.
+    split.
+    - apply composition_transfer_assoc.
+    - split.
+      + intros a d; symmetry; apply composition_relation_assoc.
+      + apply composition_required_assoc.
+  Qed.
+
+  Theorem composition_identity_left_equiv
+      {A B : Type} {P : A -> Prop} {Q : B -> Prop}
+      (cert : @certificate Ax A B P Q) :
+    certificate_equiv
+      (compose_certificate (identity_certificate P) cert) cert.
+  Proof.
+    unfold certificate_equiv.
+    split.
+    - apply identity_left_transfer.
+    - split.
+      + apply rel_comp_id_left.
+      + intro ax; simpl; split.
+        * intros [impossible | required].
+          -- contradiction.
+          -- exact required.
+        * intro required; right; exact required.
+  Qed.
+
+  Theorem composition_identity_right_equiv
+      {A B : Type} {P : A -> Prop} {Q : B -> Prop}
+      (cert : @certificate Ax A B P Q) :
+    certificate_equiv
+      (compose_certificate cert (identity_certificate Q)) cert.
+  Proof.
+    unfold certificate_equiv.
+    split.
+    - apply identity_right_transfer.
+    - split.
+      + apply rel_comp_id_right.
+      + intro ax; simpl; split.
+        * intros [required | impossible].
+          -- exact required.
+          -- contradiction.
+        * intro required; left; exact required.
+  Qed.
+
+  Definition singleton_chain
+      {A B : Type} {P : A -> Prop} {Q : B -> Prop}
+      (cert : @certificate Ax A B P Q) : @certificate_chain A B P Q :=
+    chain_cons cert (@chain_nil B Q).
+
+  Theorem fold_singleton_equiv
+      {A B : Type} {P : A -> Prop} {Q : B -> Prop}
+      (cert : @certificate Ax A B P Q) :
+    certificate_equiv (fold_chain (singleton_chain cert)) cert.
+  Proof. apply composition_identity_right_equiv. Qed.
+
   Theorem append_associative
       {A B C D : Type}
       {P : A -> Prop} {Q : B -> Prop}

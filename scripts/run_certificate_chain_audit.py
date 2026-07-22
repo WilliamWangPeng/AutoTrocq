@@ -77,6 +77,10 @@ def compose_folded_functions(
     return fold_function(right, fold_function(left, source))
 
 
+def compose_functions(first: Function, second: Function) -> Function:
+    return tuple(second[first[source]] for source in range(len(first)))
+
+
 def generate_chains(
     stages_by_pre: dict[Predicate, list[Stage]],
     predicates: list[Predicate],
@@ -146,6 +150,8 @@ def main() -> int:
     endpoint_validity_checks = 0
     append_relation_checks = 0
     append_transfer_checks = 0
+    category_associativity_checks = 0
+    category_identity_checks = 0
 
     for chain in chains:
         folded_relation = fold_relation(carrier, chain)
@@ -219,6 +225,69 @@ def main() -> int:
                     compose_folded_functions(left, right, source),
                 )
 
+        if len(chain) == 3:
+            first, second, third = chain
+            left_relation = compose(
+                carrier,
+                compose(carrier, first.relation, second.relation),
+                third.relation,
+            )
+            right_relation = compose(
+                carrier,
+                first.relation,
+                compose(carrier, second.relation, third.relation),
+            )
+            for edge in edges:
+                category_associativity_checks += 1
+                record(
+                    mismatches,
+                    "category_relation_associativity",
+                    edge in left_relation,
+                    edge in right_relation,
+                )
+            left_function = compose_functions(
+                compose_functions(first.function, second.function), third.function
+            )
+            right_function = compose_functions(
+                first.function, compose_functions(second.function, third.function)
+            )
+            for source in carrier:
+                category_associativity_checks += 1
+                record(
+                    mismatches,
+                    "category_transfer_associativity",
+                    left_function[source],
+                    right_function[source],
+                )
+
+    identity_relation = frozenset((source, source) for source in carrier)
+    identity_function: Function = tuple(carrier)
+    for stage in stages:
+        for relation, law in (
+            (compose(carrier, identity_relation, stage.relation), "category_relation_left_identity"),
+            (compose(carrier, stage.relation, identity_relation), "category_relation_right_identity"),
+        ):
+            for edge in edges:
+                category_identity_checks += 1
+                record(
+                    mismatches,
+                    law,
+                    edge in relation,
+                    edge in stage.relation,
+                )
+        for function, law in (
+            (compose_functions(identity_function, stage.function), "category_transfer_left_identity"),
+            (compose_functions(stage.function, identity_function), "category_transfer_right_identity"),
+        ):
+            for source in carrier:
+                category_identity_checks += 1
+                record(
+                    mismatches,
+                    law,
+                    function[source],
+                    stage.function[source],
+                )
+
     effect_atoms = (0, 1)
     effects = [frozenset(effect) for effect in powerset(effect_atoms)]
     effect_chains = [
@@ -230,6 +299,8 @@ def main() -> int:
     admission_checks = 0
     axiom_free_checks = 0
     append_required_checks = 0
+    effect_associativity_checks = 0
+    effect_identity_checks = 0
 
     for chain in effect_chains:
         folded_effect = frozenset().union(*chain) if chain else frozenset()
@@ -270,6 +341,28 @@ def main() -> int:
                     atom in (left_union | right_union),
                 )
 
+    empty_effect: Effect = frozenset()
+    for effect in effects:
+        for composed, law in (
+            (empty_effect | effect, "effect_left_identity"),
+            (effect | empty_effect, "effect_right_identity"),
+        ):
+            for atom in effect_atoms:
+                effect_identity_checks += 1
+                record(mismatches, law, atom in composed, atom in effect)
+
+    for first, second, third in itertools.product(effects, repeat=3):
+        left_effect = (first | second) | third
+        right_effect = first | (second | third)
+        for atom in effect_atoms:
+            effect_associativity_checks += 1
+            record(
+                mismatches,
+                "effect_associativity",
+                atom in left_effect,
+                atom in right_effect,
+            )
+
     args.out.mkdir(parents=True, exist_ok=True)
     fields = ["law", "observed", "expected"]
     with (args.out / "mismatches.csv").open(
@@ -287,10 +380,14 @@ def main() -> int:
         "endpoint_validity_checks": endpoint_validity_checks,
         "append_relation_checks": append_relation_checks,
         "append_transfer_checks": append_transfer_checks,
+        "category_associativity_checks": category_associativity_checks,
+        "category_identity_checks": category_identity_checks,
         "required_union_checks": required_union_checks,
         "admission_checks": admission_checks,
         "axiom_free_checks": axiom_free_checks,
         "append_required_checks": append_required_checks,
+        "effect_associativity_checks": effect_associativity_checks,
+        "effect_identity_checks": effect_identity_checks,
     }
     summary = {
         "schema_version": 1,

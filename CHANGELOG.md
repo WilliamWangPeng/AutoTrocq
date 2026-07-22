@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0 - 2026-07-22
+
+- Prove associativity and both identity laws for certificate composition up
+  to observational equivalence.
+- Prove that folding a singleton certificate path recovers its certificate,
+  complementing the empty-path and concatenation laws.
+- Establish the category laws for predicate-indexed certificates modulo
+  observational equivalence and the corresponding free-path fold laws.
+- Add four generic Coq results and extend the exhaustive certificate-chain
+  audit to 3,357,787 checks with zero mismatches.
+
 ## 0.8.0 - 2026-07-22
 
 - Define type-indexed finite heterogeneous chains of complete proof-transfer
