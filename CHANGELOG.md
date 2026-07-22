@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.8.0 - 2026-07-22
+
+- Define type-indexed finite heterogeneous chains of complete proof-transfer
+  certificates and a total fold into one endpoint certificate.
+- Prove preservation of the folded transfer, endpoint relatedness, and
+  relation-validity for arbitrary chain length.
+- Prove that folded axiom requirements are exactly the stage union, yielding
+  exact all-stage policy admission and axiom-freedom conservation/reflection.
+- Prove associative chain append and coherence of folding with append for
+  transfer functions, endpoint relations, and requirements.
+- Define certificate observational equivalence, prove that it is an
+  equivalence relation and a congruence for composition, and show that folding
+  preserves chain identities and concatenation up to this equivalence.
+- Add 20 generic Coq results, three heterogeneous examples, and a
+  2,883,379-check exhaustive audit with zero mismatches.
+
 ## 0.7.0 - 2026-07-22
 
 - Lift stagewise cut completeness from two relations to arbitrary finite

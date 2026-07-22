@@ -4,7 +4,8 @@
 - Coq: 8.20.1
 - Sources: `AutoTrocqOutcomeSemantics.v`, `AutoTrocqComposition.v`,
   `AutoTrocqPredicateTransformers.v`, `AutoTrocqIntermediateAssertions.v`, and
-  `AutoTrocqFullAbstraction.v`, and `AutoTrocqFiniteChains.v`
+  `AutoTrocqFullAbstraction.v`, `AutoTrocqFiniteChains.v`, and
+  `AutoTrocqCertificateChains.v`
 - `coqc -q AutoTrocqOutcomeSemantics.v`: exit status 0
 - `coqchk -silent AutoTrocqOutcomeSemantics`: exit status 0
 - `coqc -q AutoTrocqComposition.v`: exit status 0
@@ -17,6 +18,8 @@
 - `coqchk -silent AutoTrocqFullAbstraction`: exit status 0
 - `coqc -q AutoTrocqFiniteChains.v`: exit status 0
 - `coqchk -silent AutoTrocqFiniteChains`: exit status 0
+- `coqc -q AutoTrocqCertificateChains.v`: exit status 0
+- `coqchk -silent AutoTrocqCertificateChains`: exit status 0
 
 The source proves three policy-order lemmas, policy-block classification,
 accepted-outcome soundness, classification exhaustiveness, constructor
@@ -63,3 +66,13 @@ postconditions exactly characterize the endpoint relation; both transformer
 orders characterize validity; and canonical backward and forward cut
 sequences always exist. Two examples instantiate a path from `nat` through
 `option nat` to `list nat`.
+
+The certificate-chain source proves 20 generic results: folding a finite
+heterogeneous certificate chain preserves its transfer, selected relatedness,
+and endpoint relation-validity; folded requirements are exactly the stage
+union; policy admission and axiom freedom hold exactly stagewise; append is
+associative with identities; folding commutes with append for transfer,
+relation, and requirement observations; certificate observational equivalence
+is an equivalence relation and a composition congruence; and folding preserves
+identity and concatenation up to this equivalence. Three examples instantiate the
+`nat`--`option nat`--`list nat` chain.

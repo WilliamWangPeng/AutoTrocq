@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.7.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.8.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -116,3 +116,15 @@ equivalent to existence of a complete sequence of stage-valid predicates, and
 iterated weakest preconditions and strongest postconditions give canonical
 backward and forward cut sequences. The theorem is constructive and imposes no
 finiteness or decidability assumption on the carriers.
+
+`AutoTrocqCertificateChains.v` lifts composition from relations to complete
+proof-transfer certificates. An indexed chain records every intermediate
+predicate and carrier, and its fold preserves the endpoint transfer function,
+relation witness, and property proof. The folded requirement is exactly the
+union of the stage requirements; therefore a policy admits the fold exactly
+when it admits every stage, and the fold is axiom-free exactly when every stage
+is axiom-free. Chain append is associative and folding commutes with append for
+the transfer, relation, and requirement observations. These three fields define
+a certificate observational equivalence; the development proves that it is an
+equivalence relation, composition is congruent, and folding preserves chain
+identity and append up to that equivalence.

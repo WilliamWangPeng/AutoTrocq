@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.7.0 is the current research-prototype release. It implements
+Version 0.8.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -52,6 +52,14 @@ the evaluated evidence path for declarative relation packages:
   sequences, exact iterated `wp`/`sp` semantics, and canonical backward and
   forward cuts, all mechanized in Coq;
 - a 297,092-check exhaustive finite-chain audit with zero mismatches.
+- type-indexed finite chains of complete proof-transfer certificates, with a
+  fold preserving endpoint transfer, relatedness, and predicate validity;
+- exact all-stage policy admission, axiom-freedom conservation and reflection,
+  associative append, and fold/append coherence for transfer, relation, and
+  requirement observations;
+- a compositional observational equivalence on certificates, with equivalence,
+  composition-congruence, identity, and fold-functor laws mechanized in Coq;
+- a 2,883,379-check exhaustive certificate-chain audit with zero mismatches.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -127,6 +135,7 @@ python scripts/run_predicate_transformer_audit.py
 python scripts/run_intermediate_assertion_audit.py
 python scripts/run_full_abstraction_audit.py
 python scripts/run_finite_chain_audit.py
+python scripts/run_certificate_chain_audit.py
 ```
 
 ## Batch Evaluation
@@ -167,7 +176,7 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check all six mechanized developments independently:
+Check all seven mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
@@ -183,6 +192,8 @@ coqc -q AutoTrocqFullAbstraction.v
 coqchk -silent AutoTrocqFullAbstraction
 coqc -q AutoTrocqFiniteChains.v
 coqchk -silent AutoTrocqFiniteChains
+coqc -q AutoTrocqCertificateChains.v
+coqchk -silent AutoTrocqCertificateChains
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:

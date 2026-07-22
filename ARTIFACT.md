@@ -54,8 +54,8 @@ the reported workflow without carrying compiled Coq objects:
   compositional proof-transfer certificates, including weakest-precondition
   and strongest-postcondition characterizations and complete intermediate
   assertion bounds, contextual full abstraction, constructive separators,
-  compositional contextual refinement, and complete cut semantics for finite
-  heterogeneous relation paths;
+  compositional contextual refinement, complete cut semantics for finite
+  heterogeneous relation paths, and coherent finite certificate-chain folds;
 - `composition_policy/`: exhaustive 32,768-case implementation/theorem
   conformance summary and mismatch ledger;
 - `predicate_transformers/`: exhaustive 2,304-case finite audit of exact
@@ -66,6 +66,9 @@ the reported workflow without carrying compiled Coq objects:
   transformer order and extensionality, separating contexts, and composition;
 - `finite_chains/`: exhaustive 297,092-check audit of finite-path relations,
   iterated predicate transformers, cut completeness, and canonical cuts;
+- `certificate_chains/`: exhaustive 2,883,379-check audit of certificate
+  folding, endpoint preservation, append coherence, exact policy admission,
+  and axiom-freedom conservation;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
 
 The complete corpus contains 3,220 `.v` files. Its strict ledger contains
@@ -83,8 +86,9 @@ predicate-transformer metatheory contains 12 generic results plus three
 examples. The intermediate-assertion metatheory adds 10 generic results and two
 examples. The full-abstraction metatheory adds 11 generic results and three
 examples. The finite-chain metatheory adds nine generic results and two
-heterogeneous examples, for 68 generic results and 12 examples overall. From
-`artifact/metatheory/`, compile and check all six modules:
+heterogeneous examples. The certificate-chain metatheory adds 20 generic
+results and three examples, for 88 generic results and 15 examples overall.
+From `artifact/metatheory/`, compile and check all seven modules:
 
 ```text
 coqc -q AutoTrocqOutcomeSemantics.v
@@ -99,6 +103,8 @@ coqc -q AutoTrocqFullAbstraction.v
 coqchk -silent AutoTrocqFullAbstraction
 coqc -q AutoTrocqFiniteChains.v
 coqchk -silent AutoTrocqFiniteChains
+coqc -q AutoTrocqCertificateChains.v
+coqchk -silent AutoTrocqCertificateChains
 ```
 
 ## Trust Statement
