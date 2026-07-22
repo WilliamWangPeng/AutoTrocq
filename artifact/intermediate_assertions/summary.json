@@ -1,0 +1,13 @@
+{
+  "carrier_size": 2,
+  "composition_refinement_cases": 104976,
+  "intermediate_existence_cases": 4096,
+  "intermediate_interval_cases": 16384,
+  "mismatches": 0,
+  "predicates": 4,
+  "refinement_pairs": 81,
+  "relations": 16,
+  "schema_version": 1,
+  "status": "success",
+  "total_cases": 125456
+}

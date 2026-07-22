@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.4.1 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.5.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -92,3 +92,11 @@ weakest preconditions and strongest postconditions, proves their exact
 composition and Galois laws, and records an image-only counterexample. These
 results concern explicit relations and predicates; they do not synthesize a
 relation from arbitrary CIC terms.
+
+`AutoTrocqIntermediateAssertions.v` proves a cut-completeness result for two
+explicit transfer stages. A composite is relation-valid exactly when some
+intermediate predicate validates both stages. Every such predicate lies
+between the strongest postcondition of the first stage and the weakest
+precondition of the second, and both endpoints are canonical valid choices.
+The same module proves that narrowing either relation conservatively preserves
+composite validity.

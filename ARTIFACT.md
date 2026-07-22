@@ -52,11 +52,14 @@ the reported workflow without carrying compiled Coq objects:
 - `metatheory/`: Coq proofs of policy monotonicity, classification soundness,
   disjointness, exhaustiveness, the finite outcome-count partition, and
   compositional proof-transfer certificates, including weakest-precondition
-  and strongest-postcondition characterizations;
+  and strongest-postcondition characterizations and complete intermediate
+  assertion bounds;
 - `composition_policy/`: exhaustive 32,768-case implementation/theorem
   conformance summary and mismatch ledger;
 - `predicate_transformers/`: exhaustive 2,304-case finite audit of exact
   predicate-transformer composition and the Galois correspondence;
+- `intermediate_assertions/`: exhaustive 125,456-case audit of cut existence,
+  exact intermediate intervals, and relation-refinement conservativity;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
 
 The complete corpus contains 3,220 `.v` files. Its strict ledger contains
@@ -71,7 +74,8 @@ recreate them locally with the replay scripts.
 The outcome metatheory contains eight completed results. The composition
 metatheory contains 18 generic results plus two concrete examples, and the
 predicate-transformer metatheory contains 12 generic results plus three
-examples. From `artifact/metatheory/`, compile and check all three modules:
+examples. The intermediate-assertion metatheory adds 10 generic results and two
+examples. From `artifact/metatheory/`, compile and check all four modules:
 
 ```text
 coqc -q AutoTrocqOutcomeSemantics.v
@@ -80,6 +84,8 @@ coqc -q AutoTrocqComposition.v
 coqchk -silent AutoTrocqComposition
 coqc -q AutoTrocqPredicateTransformers.v
 coqchk -silent AutoTrocqPredicateTransformers
+coqc -q AutoTrocqIntermediateAssertions.v
+coqchk -silent AutoTrocqIntermediateAssertions
 ```
 
 ## Trust Statement

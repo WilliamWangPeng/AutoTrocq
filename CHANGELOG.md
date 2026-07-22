@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.5.0 - 2026-07-22
+
+- Prove that a composite transfer is valid exactly when an intermediate
+  assertion exists that validates both stages.
+- Characterize every valid intermediate assertion by the exact interval from
+  the strongest postcondition of the first stage to the weakest precondition
+  of the second stage.
+- Establish canonical strongest and weakest intermediate assertions and
+  conservativity under componentwise relation refinement.
+- Add 10 generic Coq results, two separating examples, and a 125,456-case
+  finite audit with zero mismatches.
+
 ## 0.4.1 - 2026-07-22
 
 - Make the predicate-transformer audit honor its `--out` directory so CI and

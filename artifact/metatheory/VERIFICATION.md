@@ -4,12 +4,15 @@
 - Coq: 8.20.1
 - Sources: `AutoTrocqOutcomeSemantics.v`, `AutoTrocqComposition.v`,
   `AutoTrocqPredicateTransformers.v`
+  and `AutoTrocqIntermediateAssertions.v`
 - `coqc -q AutoTrocqOutcomeSemantics.v`: exit status 0
 - `coqchk -silent AutoTrocqOutcomeSemantics`: exit status 0
 - `coqc -q AutoTrocqComposition.v`: exit status 0
 - `coqchk -silent AutoTrocqComposition`: exit status 0
 - `coqc -q AutoTrocqPredicateTransformers.v`: exit status 0
 - `coqchk -silent AutoTrocqPredicateTransformers`: exit status 0
+- `coqc -q AutoTrocqIntermediateAssertions.v`: exit status 0
+- `coqchk -silent AutoTrocqIntermediateAssertions`: exit status 0
 
 The source proves three policy-order lemmas, policy-block classification,
 accepted-outcome soundness, classification exhaustiveness, constructor
@@ -31,3 +34,11 @@ characterizations. Three examples check selected-image preservation,
 relatedness, and a counterexample showing that selected-image preservation
 does not imply preservation for every target admitted by a nondeterministic
 relation.
+
+The intermediate-assertion source proves 10 generic results: relation-validity
+conservativity and transformer variance under refinement; the exact interval
+characterization of valid intermediate predicates; equivalence between
+composite validity and existence of a stagewise cut; canonical strongest and
+weakest cuts; their universal bounds; and composition conservativity under
+componentwise refinement. Two Boolean examples separate a deterministic chain
+with a valid cut from an ambiguous chain with no valid cut.

@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.4.1 is the current research-prototype release. It implements
+Version 0.5.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -39,6 +39,11 @@ the evaluated evidence path for declarative relation packages:
   composition laws, and a Galois correspondence mechanized in Coq;
 - a 2,304-case finite predicate-transformer audit and a checked counterexample
   showing why preservation of only the selected image is insufficient.
+- a complete intermediate-assertion theorem: a composite transfer is valid
+  exactly when a stagewise cut exists, with all cuts characterized by the
+  interval between the strongest postcondition and weakest precondition;
+- componentwise relation-refinement conservativity and a 125,456-case finite
+  audit of cut existence, interval bounds, and refinement.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
 proofs. Relation definitions and law proofs are supplied in the package
@@ -111,6 +116,7 @@ audit with:
 ```powershell
 python scripts/run_composition_policy_audit.py
 python scripts/run_predicate_transformer_audit.py
+python scripts/run_intermediate_assertion_audit.py
 ```
 
 ## Batch Evaluation
@@ -151,7 +157,7 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check all three mechanized developments independently:
+Check all four mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
@@ -161,6 +167,8 @@ coqc -q AutoTrocqComposition.v
 coqchk -silent AutoTrocqComposition
 coqc -q AutoTrocqPredicateTransformers.v
 coqchk -silent AutoTrocqPredicateTransformers
+coqc -q AutoTrocqIntermediateAssertions.v
+coqchk -silent AutoTrocqIntermediateAssertions
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:
