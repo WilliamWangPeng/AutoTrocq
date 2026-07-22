@@ -1,6 +1,6 @@
 # Package Specification
 
-AutoTrocq 0.5.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
+AutoTrocq 0.6.0 accepts UTF-8 JSON objects. Coq fragments are copied into a
 generated module and are therefore checked by Coq rather than interpreted by
 the Python process.
 
@@ -100,3 +100,11 @@ between the strongest postcondition of the first stage and the weakest
 precondition of the second, and both endpoints are canonical valid choices.
 The same module proves that narrowing either relation conservatively preserves
 composite validity.
+
+`AutoTrocqFullAbstraction.v` proves that relation refinement is equivalent to
+preservation of every predicate-transfer judgment and to the corresponding
+orders on strongest postconditions and weakest preconditions. It reconstructs
+the relation from either transformer, constructs a separating predicate
+context for every non-refining edge, and proves that contextual refinement is
+preserved by relational composition. These results are constructive and do
+not assume finite carriers or decidable equality.

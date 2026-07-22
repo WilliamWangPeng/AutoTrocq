@@ -40,10 +40,13 @@ jobs:
             coqchk -silent AutoTrocqPredicateTransformers
             coqc -q AutoTrocqIntermediateAssertions.v
             coqchk -silent AutoTrocqIntermediateAssertions
+            coqc -q AutoTrocqFullAbstraction.v
+            coqchk -silent AutoTrocqFullAbstraction
             popd
             python3 scripts/run_composition_policy_audit.py --out /tmp/autotrocq-composition-audit
             python3 scripts/run_predicate_transformer_audit.py --out /tmp/autotrocq-predicate-transformer-audit
             python3 scripts/run_intermediate_assertion_audit.py --out /tmp/autotrocq-intermediate-assertion-audit
+            python3 scripts/run_full_abstraction_audit.py --out /tmp/autotrocq-full-abstraction-audit
             python3 -m autotrocq.cli generate examples/bool_nat_section.json --out /tmp/autotrocq-quickstart
             python3 -m autotrocq.cli replay /tmp/autotrocq-quickstart/BoolNatSection.v --report /tmp/autotrocq-quickstart/BoolNatSection.replay.json
             python3 -m autotrocq.cli batch artifact/direct-cli-matrix/specs --out /tmp/autotrocq-matrix

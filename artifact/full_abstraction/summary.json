@@ -1,0 +1,19 @@
+{
+  "carrier_size": 2,
+  "composition_refinement_checks": 6561,
+  "equivalence_context_checks": 4096,
+  "mismatches": 0,
+  "predicates": 4,
+  "refinement_pairs": 81,
+  "relation_pairs": 256,
+  "relations": 16,
+  "schema_version": 1,
+  "separating_edge_checks": 256,
+  "status": "success",
+  "strongest_post_checks": 1024,
+  "strongest_post_extensionality_checks": 1024,
+  "total_checks": 19105,
+  "validity_context_checks": 4096,
+  "weakest_pre_checks": 1024,
+  "weakest_pre_extensionality_checks": 1024
+}

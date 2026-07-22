@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 - 2026-07-22
+
+- Prove contextual full abstraction: relation refinement is equivalent to
+  preservation of every valid predicate-transfer judgment.
+- Give exact strongest-postcondition and weakest-precondition orders for
+  refinement and reconstruct the original relation from either transformer.
+- Construct a separating predicate context for every non-refining edge and
+  prove contextual refinement is preserved by relational composition.
+- Add 11 generic Coq results, three examples, and a 19,105-check exhaustive
+  audit with zero mismatches.
+
 ## 0.5.0 - 2026-07-22
 
 - Prove that a composite transfer is valid exactly when an intermediate

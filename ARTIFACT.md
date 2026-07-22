@@ -53,13 +53,16 @@ the reported workflow without carrying compiled Coq objects:
   disjointness, exhaustiveness, the finite outcome-count partition, and
   compositional proof-transfer certificates, including weakest-precondition
   and strongest-postcondition characterizations and complete intermediate
-  assertion bounds;
+  assertion bounds, contextual full abstraction, constructive separators, and
+  compositional contextual refinement;
 - `composition_policy/`: exhaustive 32,768-case implementation/theorem
   conformance summary and mismatch ledger;
 - `predicate_transformers/`: exhaustive 2,304-case finite audit of exact
   predicate-transformer composition and the Galois correspondence;
 - `intermediate_assertions/`: exhaustive 125,456-case audit of cut existence,
   exact intermediate intervals, and relation-refinement conservativity;
+- `full_abstraction/`: exhaustive 19,105-check audit of contextual refinement,
+  transformer order and extensionality, separating contexts, and composition;
 - `../MANIFEST_SHA256.csv`: hashes of all tracked release files.
 
 The complete corpus contains 3,220 `.v` files. Its strict ledger contains
@@ -75,7 +78,9 @@ The outcome metatheory contains eight completed results. The composition
 metatheory contains 18 generic results plus two concrete examples, and the
 predicate-transformer metatheory contains 12 generic results plus three
 examples. The intermediate-assertion metatheory adds 10 generic results and two
-examples. From `artifact/metatheory/`, compile and check all four modules:
+examples. The full-abstraction metatheory adds 11 generic results and three
+examples, for 59 generic results and 10 examples overall. From
+`artifact/metatheory/`, compile and check all five modules:
 
 ```text
 coqc -q AutoTrocqOutcomeSemantics.v
@@ -86,6 +91,8 @@ coqc -q AutoTrocqPredicateTransformers.v
 coqchk -silent AutoTrocqPredicateTransformers
 coqc -q AutoTrocqIntermediateAssertions.v
 coqchk -silent AutoTrocqIntermediateAssertions
+coqc -q AutoTrocqFullAbstraction.v
+coqchk -silent AutoTrocqFullAbstraction
 ```
 
 ## Trust Statement

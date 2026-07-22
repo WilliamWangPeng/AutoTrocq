@@ -1,10 +1,10 @@
 # Mechanized policy, outcome, composition, and completeness verification
 
-- Date: 2026-07-21
+- Date: 2026-07-22
 - Coq: 8.20.1
 - Sources: `AutoTrocqOutcomeSemantics.v`, `AutoTrocqComposition.v`,
-  `AutoTrocqPredicateTransformers.v`
-  and `AutoTrocqIntermediateAssertions.v`
+  `AutoTrocqPredicateTransformers.v`, `AutoTrocqIntermediateAssertions.v`, and
+  `AutoTrocqFullAbstraction.v`
 - `coqc -q AutoTrocqOutcomeSemantics.v`: exit status 0
 - `coqchk -silent AutoTrocqOutcomeSemantics`: exit status 0
 - `coqc -q AutoTrocqComposition.v`: exit status 0
@@ -13,6 +13,8 @@
 - `coqchk -silent AutoTrocqPredicateTransformers`: exit status 0
 - `coqc -q AutoTrocqIntermediateAssertions.v`: exit status 0
 - `coqchk -silent AutoTrocqIntermediateAssertions`: exit status 0
+- `coqc -q AutoTrocqFullAbstraction.v`: exit status 0
+- `coqchk -silent AutoTrocqFullAbstraction`: exit status 0
 
 The source proves three policy-order lemmas, policy-block classification,
 accepted-outcome soundness, classification exhaustiveness, constructor
@@ -42,3 +44,12 @@ composite validity and existence of a stagewise cut; canonical strongest and
 weakest cuts; their universal bounds; and composition conservativity under
 componentwise refinement. Two Boolean examples separate a deterministic chain
 with a valid cut from an ambiguous chain with no valid cut.
+
+The full-abstraction source proves 11 generic results: constructive recovery
+of a relation from strongest postconditions or weakest preconditions; exact
+equivalences among relation refinement, validity-theory inclusion, and both
+transformer orders; extensional equivalence from validity and transformer
+semantics; a constructive separating context for a missing edge; and
+compositionality of relational and contextual refinement. Three Boolean
+examples check strict refinement, failure of the converse, and the generated
+separator.
