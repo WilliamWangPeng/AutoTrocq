@@ -18,7 +18,7 @@ Public repository: <https://github.com/WilliamWangPeng/AutoTrocq>
 
 ## Status and Scope
 
-Version 0.9.0 is the current research-prototype release. It implements
+Version 0.10.0 is the current research-prototype release. It implements
 the evaluated evidence path for declarative relation packages:
 
 - finite relation strengths: plain, section, retraction, equivalence, and
@@ -61,6 +61,9 @@ the evaluated evidence path for declarative relation packages:
   composition-congruence, identity, and fold-functor laws mechanized in Coq;
 - category laws for predicate-indexed certificates modulo observational
   equivalence, and empty, singleton, and concatenated free-path fold laws;
+- sound-and-complete reflection of finite Boolean relation-validity,
+  selected-relatedness, and axiom-admission checks into the abstract
+  certificate calculus, including checked-candidate materialization;
 - a 3,357,787-check exhaustive certificate-chain audit with zero mismatches.
 
 The prototype does not parse arbitrary CIC terms or synthesize missing Coq
@@ -73,7 +76,7 @@ text is a proposal, while successful kernel replay is evidence.
 - Python 3.10 or later
 - Coq 8.20.1, with `coqc` and `coqchk` on `PATH`
 
-The reported artifact was validated with Python 3.14.3 and Coq 8.20.1 on
+The reported artifact was validated with Python 3.12.13 and Coq 8.20.1 on
 Windows 11. The command-line implementation uses only the Python standard
 library.
 
@@ -178,7 +181,7 @@ modules, the strict 3,221-request outcome ledger, raw result tables, the direct
 CLI matrix, and replay entry points used by the paper. See
 [ARTIFACT.md](ARTIFACT.md) for claim-to-file mapping and expected results.
 
-Check all seven mechanized developments independently:
+Check all eight mechanized developments independently:
 
 ```powershell
 cd artifact/metatheory
@@ -196,6 +199,8 @@ coqc -q AutoTrocqFiniteChains.v
 coqchk -silent AutoTrocqFiniteChains
 coqc -q AutoTrocqCertificateChains.v
 coqchk -silent AutoTrocqCertificateChains
+coqc -q AutoTrocqExecutableReflection.v
+coqchk -silent AutoTrocqExecutableReflection
 ```
 
 Replay the 82-module quick profile with outcome-aware expectations:

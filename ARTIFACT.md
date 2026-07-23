@@ -55,7 +55,9 @@ the reported workflow without carrying compiled Coq objects:
   and strongest-postcondition characterizations and complete intermediate
   assertion bounds, contextual full abstraction, constructive separators,
   compositional contextual refinement, complete cut semantics for finite
-  heterogeneous relation paths, and coherent finite certificate-chain folds;
+  heterogeneous relation paths, coherent finite certificate-chain folds, and
+  sound-and-complete reflection from finite Boolean checks to abstract
+  certificate validity, policy admission, and certificate materialization;
 - `composition_policy/`: exhaustive 32,768-case implementation/theorem
   conformance summary and mismatch ledger;
 - `predicate_transformers/`: exhaustive 2,304-case finite audit of exact
@@ -88,7 +90,9 @@ examples. The full-abstraction metatheory adds 11 generic results and three
 examples. The finite-chain metatheory adds nine generic results and two
 heterogeneous examples. The certificate-chain metatheory adds 24 generic
 results and three examples, for 92 generic results and 15 examples overall.
-From `artifact/metatheory/`, compile and check all seven modules:
+The executable-reflection metatheory adds 10 generic results, for 102 generic
+results and 15 examples overall. From `artifact/metatheory/`, compile and
+check all eight modules:
 
 ```text
 coqc -q AutoTrocqOutcomeSemantics.v
@@ -105,6 +109,8 @@ coqc -q AutoTrocqFiniteChains.v
 coqchk -silent AutoTrocqFiniteChains
 coqc -q AutoTrocqCertificateChains.v
 coqchk -silent AutoTrocqCertificateChains
+coqc -q AutoTrocqExecutableReflection.v
+coqchk -silent AutoTrocqExecutableReflection
 ```
 
 ## Trust Statement
@@ -114,7 +120,9 @@ inference, policy classification, and Coq text generation are ordinary
 programs and may contain bugs. The reported proof evidence is the generated
 source accepted by `coqc` and the resulting object accepted by `coqchk`.
 Manifest hashes support file identity; they do not establish semantic
-correctness.
+correctness. The executable-reflection module verifies the finite Boolean
+decision layer under complete enumerations and correct decision procedures;
+it does not verify the Python parser, text renderer, or process launcher.
 
 ## Known Limitations
 

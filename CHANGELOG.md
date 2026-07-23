@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.10.0 - 2026-07-23
+
+- Add a finite executable checker for relation validity, selected
+  relatedness, candidate validity, and axiom-policy admission.
+- Prove soundness and completeness of every Boolean check with respect to the
+  abstract certificate calculus under complete finite enumerations and
+  correct decision procedures.
+- Prove that every passing candidate materializes as an admitted certificate
+  with identical transfer, relation, and axiom-effect observations.
+- Verify the new module with both `coqc` and independent `coqchk`, bringing
+  the mechanized development to 117 named results across eight modules.
+
 ## 0.9.0 - 2026-07-22
 
 - Prove associativity and both identity laws for certificate composition up

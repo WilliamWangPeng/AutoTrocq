@@ -1,11 +1,11 @@
-# Mechanized policy, outcome, composition, and completeness verification
+# Mechanized policy, composition, completeness, and checker reflection
 
-- Date: 2026-07-22
+- Date: 2026-07-23
 - Coq: 8.20.1
 - Sources: `AutoTrocqOutcomeSemantics.v`, `AutoTrocqComposition.v`,
   `AutoTrocqPredicateTransformers.v`, `AutoTrocqIntermediateAssertions.v`, and
   `AutoTrocqFullAbstraction.v`, `AutoTrocqFiniteChains.v`, and
-  `AutoTrocqCertificateChains.v`
+  `AutoTrocqCertificateChains.v`, and `AutoTrocqExecutableReflection.v`
 - `coqc -q AutoTrocqOutcomeSemantics.v`: exit status 0
 - `coqchk -silent AutoTrocqOutcomeSemantics`: exit status 0
 - `coqc -q AutoTrocqComposition.v`: exit status 0
@@ -20,6 +20,8 @@
 - `coqchk -silent AutoTrocqFiniteChains`: exit status 0
 - `coqc -q AutoTrocqCertificateChains.v`: exit status 0
 - `coqchk -silent AutoTrocqCertificateChains`: exit status 0
+- `coqc -q AutoTrocqExecutableReflection.v`: exit status 0
+- `coqchk -silent AutoTrocqExecutableReflection`: exit status 0
 
 The source proves three policy-order lemmas, policy-block classification,
 accepted-outcome soundness, classification exhaustiveness, constructor
@@ -77,3 +79,11 @@ is an equivalence relation and a composition congruence; certificate
 composition satisfies associativity and both identity laws modulo this
 equivalence; and folding preserves empty, singleton, and concatenated paths.
 Three examples instantiate the `nat`--`option nat`--`list nat` chain.
+
+The executable-reflection source proves 10 generic results: reflection of
+finite universal quantification and decidable propositions into Boolean
+checks; soundness and completeness of Boolean implication; exact reflection
+of relation validity, selected relatedness, candidate validity, and axiom
+admission; exact publishability reflection; and materialization of every
+passing candidate as an admitted abstract certificate with identical
+transfer, relation, and effect fields.

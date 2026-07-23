@@ -1,8 +1,8 @@
 {
   "title": "AutoTrocq: Auditable Relation-Package Generation and Kernel Replay",
-  "description": "Research prototype and complete reproducibility artifact for compositional, axiom-aware Coq relation-package generation, categorical laws for finite heterogeneous certificate chains modulo observational equivalence, predicate-transformer, intermediate-assertion, and contextual full-abstraction theorems, exact composition-policy auditing, mutually exclusive outcome accounting, and kernel replay.",
-  "version": "0.9.0",
-  "publication_date": "2026-07-22",
+  "description": "Research prototype and complete reproducibility artifact for compositional, axiom-aware Coq relation-package generation, categorical laws for finite heterogeneous certificate chains modulo observational equivalence, predicate-transformer, intermediate-assertion, contextual full-abstraction, and finite executable-checker reflection theorems, exact composition-policy auditing, mutually exclusive outcome accounting, and kernel replay.",
+  "version": "0.10.0",
+  "publication_date": "2026-07-23",
   "creators": [
     {"name": "Wang, Peng", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},
     {"name": "Qi, Kaiyuan", "affiliation": "Jinan Inspur Data Technology Co., Ltd."},
